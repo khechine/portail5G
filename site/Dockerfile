@@ -1,13 +1,13 @@
 # ============================================================
 #  Frontend Site (Express/EJS) - Dockerfile
 # ============================================================
-FROM node:18-alpine
+FROM node:20-alpine
 
 ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 COPY . .
 

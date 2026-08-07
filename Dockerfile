@@ -1,7 +1,10 @@
 # ============================================================
-#  Strapi CMS - Dockerfile
+#  Strapi CMS - Dockerfile (Node 20)
 # ============================================================
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
+
+# Outils de build requis pour les dépendances natives (better-sqlite3)
+RUN apk add --no-cache python3 make g++
 
 WORKDIR /app
 
@@ -12,13 +15,16 @@ COPY . .
 RUN npm run build
 
 # ---- Production image ----
-FROM node:18-alpine
+FROM node:20-alpine
 
 ENV NODE_ENV=production
 WORKDIR /app
 
+# Outils de build pour la réinstallation native en production
+RUN apk add --no-cache python3 make g++
+
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/config ./config
