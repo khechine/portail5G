@@ -1,0 +1,27 @@
+<% if (home.faq && home.faq.enabled && (home.faq.items || []).length) { %>
+<section class="section faq" id="faq">
+  <div class="container faq__container">
+    <div class="section__head">
+      <% if (home.faq.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.faq.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.faq.title) { %><%- nl2br(esc(home.faq.title)) %><% } %>
+        <% if (home.faq.titleHighlight) { %><em><%= esc(home.faq.titleHighlight) %></em><% } %>
+      </h2>
+    </div>
+
+    <div class="faq__list">
+      <% (home.faq.items || []).forEach((item, i) => { %>
+        <div class="faq__item<%= i === 0 ? ' is-open' : '' %>">
+          <button class="faq__q" aria-expanded="<%= i === 0 %>">
+            <span><%= esc(item.question) %></span>
+            <svg viewBox="0 0 24 24" width="16" height="16" class="faq__chevron"><use href="#i-chevron-down"></use></svg>
+          </button>
+          <div class="faq__a"><p><%= esc(item.answer) %></p></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>

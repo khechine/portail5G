@@ -1,0 +1,33 @@
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="header__logo" href="<%= sitePath %>/" aria-label="<%= esc(config.siteName) %>">
+      <% if (config.logo) { %>
+        <img src="<%= mediaUrl(config.logo) %>" alt="<%= esc(config.siteName) %>">
+      <% } else { %>
+        <span class="header__logo-text"><%= esc(config.siteName || 'TOPNET') %></span>
+      <% } %>
+    </a>
+
+    <nav class="header__nav" id="nav">
+      <% (config.navItems || []).forEach(item => { %>
+        <a class="header__link" href="<%= esc(item.url) %>"><%= esc(item.label) %></a>
+      <% }) %>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__lang" href="<%= otherLocale(locale).path %>" title="<%= esc(config.langLabel) %>">
+        <svg viewBox="0 0 24 24" width="16" height="16"><use href="#i-globe"></use></svg>
+        <span><%= esc(config.langLabel) %></span>
+      </a>
+      <% if (config.ctaLabel && config.ctaUrl) { %>
+        <a class="btn btn--primary header__cta" href="<%= esc(config.ctaUrl) %>">
+          <span><%= esc(config.ctaLabel) %></span>
+          <svg viewBox="0 0 24 24" width="15" height="15"><use href="#i-arrow-right"></use></svg>
+        </a>
+      <% } %>
+      <button class="header__burger" id="burger" aria-label="menu">
+        <svg viewBox="0 0 24 24" width="22" height="22"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>

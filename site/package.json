@@ -1,0 +1,18 @@
+{
+  "name": "topnet-box5g-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend de la landing page Topnet Box 5G (FR / AR), alimenté par Strapi.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

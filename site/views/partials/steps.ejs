@@ -1,0 +1,35 @@
+<% if (home.steps && home.steps.enabled) { %>
+<section class="section steps">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.steps.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.steps.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.steps.title) { %><%- nl2br(esc(home.steps.title)) %><% } %>
+        <% if (home.steps.titleHighlight) { %><em><%= esc(home.steps.titleHighlight) %></em><% } %>
+      </h2>
+    </div>
+
+    <div class="steps__grid">
+      <% (home.steps.steps || []).forEach((step, i) => { %>
+        <article class="step-card">
+          <div class="step-card__num"><%= i + 1 %></div>
+          <h3 class="step-card__title"><%= esc(step.title) %></h3>
+          <p class="step-card__text"><%= esc(step.description) %></p>
+        </article>
+      <% }) %>
+    </div>
+
+    <% if (home.steps.helpTitle || home.steps.helpText) { %>
+      <div class="steps__help">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-phone"></use></svg>
+        <div>
+          <% if (home.steps.helpTitle) { %><strong><%= esc(home.steps.helpTitle) %></strong><% } %>
+          <% if (home.steps.helpText) { %><span><%= esc(home.steps.helpText) %></span><% } %>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</section>
+<% } %>

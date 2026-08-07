@@ -1,0 +1,36 @@
+<% if (home.news && home.news.enabled && (home.news.items || []).length) { %>
+<section class="section news">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.news.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.news.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.news.title) { %><%- nl2br(esc(home.news.title)) %><% } %>
+        <% if (home.news.titleHighlight) { %><em><%= esc(home.news.titleHighlight) %></em><% } %>
+      </h2>
+    </div>
+
+    <div class="news__grid">
+      <% (home.news.items || []).forEach(post => { %>
+        <article class="news-card">
+          <% if (post.image) { %>
+            <a class="news-card__media" href="<%= esc(post.link) %>">
+              <img src="<%= mediaUrl(post.image) %>" alt="<%= esc(post.title) %>">
+            </a>
+          <% } %>
+          <div class="news-card__body">
+            <% if (post.date) { %><div class="news-card__date"><%= esc(post.date) %></div><% } %>
+            <h3 class="news-card__title">
+              <a href="<%= esc(post.link) %>"><%= esc(post.title) %></a>
+            </h3>
+            <% if (post.excerpt) { %>
+              <p class="news-card__text"><%= esc(post.excerpt) %></p>
+            <% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>

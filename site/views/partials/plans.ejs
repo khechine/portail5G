@@ -1,0 +1,77 @@
+<% if (home.plans && home.plans.enabled && (home.plans.groups || []).length) { %>
+<section class="section plans" id="offres">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.plans.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.plans.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.plans.title) { %><%- nl2br(esc(home.plans.title)) %><% } %>
+        <% if (home.plans.titleHighlight) { %><em><%= esc(home.plans.titleHighlight) %></em><% } %>
+      </h2>
+      <% if (home.plans.subtitle) { %>
+        <p class="section__subtitle"><%= esc(home.plans.subtitle) %></p>
+      <% } %>
+    </div>
+
+    <% if ((home.plans.groups || []).length > 1) { %>
+      <div class="tabs" role="tablist">
+        <% (home.plans.groups || []).forEach((g, gi) => { %>
+          <button class="tabs__btn<%= gi === 0 ? ' is-active' : '' %>" data-tab="<%= gi %>" role="tab"><%= esc(g.name) %></button>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% (home.plans.groups || []).forEach((g, gi) => { %>
+      <div class="plans__pane<%= gi === 0 ? ' is-active' : '' %>" data-pane="<%= gi %>">
+        <div class="plans__grid">
+          <% (g.cards || []).forEach(card => { %>
+            <article class="plan-card<%= card.recommended ? ' is-best' : '' %>">
+              <% if (card.image) { %>
+                <div class="plan-card__media">
+                  <img src="<%= mediaUrl(card.image) %>" alt="<%= esc(card.title) %>">
+                </div>
+              <% } %>
+              <% if (card.badge) { %>
+                <span class="plan-card__badge"><%= esc(card.badge) %></span>
+              <% } %>
+              <div class="plan-card__body">
+                <div class="plan-card__speed">
+                  <span class="plan-card__speed-num"><%= esc(card.speed) %><sup><%= esc(card.speedUnit) %></sup></span>
+                  <span class="plan-card__speed-lbl"><%= esc(card.speedLabel) %></span>
+                </div>
+                <h3 class="plan-card__title"><%= esc(card.title) %></h3>
+                <div class="plan-card__price">
+                  <span class="plan-card__price-num"><%= esc(card.price) %></span>
+                  <span class="plan-card__price-cur"><%= esc(card.currency) %></span>
+                  <span class="plan-card__price-period"><%= esc(card.period) %></span>
+                </div>
+                <% if ((card.features || []).length) { %>
+                  <ul class="plan-card__list">
+                    <% (card.features || []).forEach(f => { %>
+                      <li>
+                        <span class="ic-check"><svg viewBox="0 0 24 24" width="13" height="13"><use href="#i-check"></use></svg></span>
+                        <span><%= esc(f.text) %></span>
+                      </li>
+                    <% }) %>
+                  </ul>
+                <% } %>
+                <% if (card.buttonLabel) { %>
+                  <a class="btn <%= card.recommended ? 'btn--primary' : 'btn--outline' %> plan-card__btn" href="<%= esc(card.buttonUrl) %>">
+                    <span><%= esc(card.buttonLabel) %></span>
+                    <svg viewBox="0 0 24 24" width="14" height="14"><use href="#i-arrow-right"></use></svg>
+                  </a>
+                <% } %>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+    <% }) %>
+
+    <% if (home.plans.note) { %>
+      <p class="plans__note"><%= esc(home.plans.note) %></p>
+    <% } %>
+  </div>
+</section>
+<% } %>

@@ -1,0 +1,37 @@
+<% if (home.specs && home.specs.enabled) { %>
+<section class="section specs" id="specs">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.specs.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.specs.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.specs.title) { %><%- nl2br(esc(home.specs.title)) %><% } %>
+        <% if (home.specs.titleHighlight) { %><em><%= esc(home.specs.titleHighlight) %></em><% } %>
+      </h2>
+    </div>
+
+    <div class="specs__grid">
+      <div class="specs__media">
+        <% if (home.specs.image) { %>
+          <img src="<%= mediaUrl(home.specs.image) %>" alt="<%= esc(home.specs.title) %>">
+        <% } %>
+      </div>
+      <div class="specs__table-wrap">
+        <% if ((home.specs.rows || []).length) { %>
+          <table class="specs__table">
+            <tbody>
+              <% (home.specs.rows || []).forEach(row => { %>
+                <tr>
+                  <td><%= esc(row.label) %></td>
+                  <td class="<%= row.highlight ? 'is-hl' : '' %>"><%= esc(row.value) %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>

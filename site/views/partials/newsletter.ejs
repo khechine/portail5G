@@ -1,0 +1,26 @@
+<% if (home.newsletter && home.newsletter.enabled) { %>
+<section class="newsletter">
+  <div class="container newsletter__inner">
+    <div class="newsletter__text">
+      <% if (home.newsletter.title) { %>
+        <h2 class="newsletter__title"><%= esc(home.newsletter.title) %></h2>
+      <% } %>
+      <% if (home.newsletter.text) { %>
+        <p class="newsletter__sub"><%= esc(home.newsletter.text) %></p>
+      <% } %>
+    </div>
+    <form class="newsletter__form" id="newsletter-form" novalidate>
+      <input type="hidden" name="locale" value="<%= locale %>">
+      <input class="newsletter__input" type="email" name="email" placeholder="<%= esc(home.newsletter.placeholder) %>" required>
+      <button class="btn btn--primary newsletter__btn" type="submit">
+        <span><%= esc(home.newsletter.buttonLabel) %></span>
+        <svg viewBox="0 0 24 24" width="14" height="14"><use href="#i-arrow-right"></use></svg>
+      </button>
+      <p class="newsletter__msg" id="newsletter-msg" role="status"
+        data-email="<%= esc(home.newsletter.msgEmail) %>"
+        data-success="<%= esc(home.newsletter.msgSuccess) %>"
+        data-error="<%= esc(home.newsletter.msgError) %>"></p>
+    </form>
+  </div>
+</section>
+<% } %>

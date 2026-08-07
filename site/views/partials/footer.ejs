@@ -1,0 +1,64 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a class="footer__logo" href="<%= sitePath %>/">
+          <% if (config.logo) { %>
+            <img src="<%= mediaUrl(config.logo) %>" alt="<%= esc(config.siteName) %>">
+          <% } else { %>
+            <span class="footer__logo-text"><%= esc(config.siteName || 'TOPNET') %></span>
+          <% } %>
+        </a>
+        <% if (config.footerAbout) { %>
+          <p class="footer__about"><%= esc(config.footerAbout) %></p>
+        <% } %>
+        <% if ((config.socials || []).length) { %>
+          <div class="footer__socials">
+            <% (config.socials || []).forEach(s => { %>
+              <a class="footer__soc" href="<%= esc(s.url) %>" aria-label="<%= esc(s.label) %>" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><use href="#i-<%= esc(s.label) %>"></use></svg>
+              </a>
+            <% }) %>
+          </div>
+        <% } %>
+      </div>
+
+      <% (config.footerColumns || []).forEach(col => { %>
+        <div class="footer__col">
+          <% if (col.title) { %><h4 class="footer__title"><%= esc(col.title) %></h4><% } %>
+          <ul class="footer__links">
+            <% (col.links || []).forEach(l => { %>
+              <li><a href="<%= esc(l.url) %>"><%= esc(l.label) %></a></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% }) %>
+
+      <% if (config.contactTitle) { %>
+        <div class="footer__col">
+          <h4 class="footer__title"><%= esc(config.contactTitle) %></h4>
+          <ul class="footer__links footer__links--contact">
+            <% if (config.address) { %>
+              <li><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14"><use href="#i-pin"></use></svg></span><span><%= esc(config.address) %></span></li>
+            <% } %>
+            <% if (config.phone) { %>
+              <li><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14"><use href="#i-phone"></use></svg></span><a href="tel:<%= esc(config.phone) %>"><%= esc(config.phone) %></a></li>
+            <% } %>
+            <% if (config.email) { %>
+              <li><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14"><use href="#i-mail"></use></svg></span><a href="mailto:<%= esc(config.email) %>"><%= esc(config.email) %></a></li>
+            <% } %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy"><%= esc(config.footerText) %></p>
+      <div class="footer__legal">
+        <% (config.legalLinks || []).forEach(l => { %>
+          <a href="<%= esc(l.url) %>"><%= esc(l.label) %></a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</footer>

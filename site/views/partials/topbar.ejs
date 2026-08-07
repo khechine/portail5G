@@ -1,0 +1,24 @@
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__left">
+      <% if (config.topbarLeft) { %>
+        <span class="topbar__item"><%= esc(config.topbarLeft) %></span>
+      <% } %>
+      <% if (config.email) { %>
+        <a class="topbar__item topbar__link" href="mailto:<%= esc(config.email) %>"><%= esc(config.email) %></a>
+      <% } %>
+      <% if (config.address) { %>
+        <span class="topbar__item topbar__hidden-mobile"><%= esc(config.address) %></span>
+      <% } %>
+    </div>
+    <div class="topbar__right">
+      <div class="topbar__socials">
+        <% (config.socials || []).forEach(s => { %>
+          <a class="topbar__soc" href="<%= esc(s.url) %>" aria-label="<%= esc(s.label) %>" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><use href="#i-<%= esc(s.label) %>"></use></svg>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>

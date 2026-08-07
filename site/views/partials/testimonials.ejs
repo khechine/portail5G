@@ -1,0 +1,58 @@
+<% if (home.testimonials && home.testimonials.enabled && (home.testimonials.items || []).length) { %>
+<section class="section testimonials">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.testimonials.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.testimonials.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.testimonials.title) { %><%- nl2br(esc(home.testimonials.title)) %><% } %>
+        <% if (home.testimonials.titleHighlight) { %><em><%= esc(home.testimonials.titleHighlight) %></em><% } %>
+      </h2>
+    </div>
+
+    <div class="tslider" data-slider>
+      <div class="tslider__track">
+        <% (home.testimonials.items || []).forEach((t, i) => { %>
+          <div class="tslider__slide<%= i === 0 ? ' is-active' : '' %>">
+            <div class="t-card">
+              <div class="t-card__stars" aria-label="<%= t.rating %>/5">
+                <% const st = stars(t.rating); for (let s = 0; s < st.full; s++) { %>
+                  <svg viewBox="0 0 24 24" width="16" height="16"><use href="#i-star"></use></svg>
+                <% } for (let s = 0; s < st.empty; s++) { %>
+                  <svg viewBox="0 0 24 24" width="16" height="16"><use href="#i-star-empty"></use></svg>
+                <% } %>
+              </div>
+              <p class="t-card__quote">“<%= esc(t.quote) %>”</p>
+              <div class="t-card__author">
+                <% if (t.avatar) { %>
+                  <img class="t-card__avatar" src="<%= mediaUrl(t.avatar) %>" alt="<%= esc(t.author) %>">
+                <% } %>
+                <div>
+                  <div class="t-card__name"><%= esc(t.author) %></div>
+                  <% if (t.role) { %><div class="t-card__role"><%= esc(t.role) %></div><% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+      <% if ((home.testimonials.items || []).length > 1) { %>
+        <div class="tslider__controls">
+          <button class="tslider__nav is-prev" aria-label="prev">
+            <svg viewBox="0 0 24 24" width="16" height="16" style="transform:scaleX(-1)"><use href="#i-arrow-right"></use></svg>
+          </button>
+          <div class="tslider__dots">
+            <% (home.testimonials.items || []).forEach((_, i) => { %>
+              <button class="tslider__dot<%= i === 0 ? ' is-active' : '' %>" data-slide="<%= i %>" aria-label="slide <%= i + 1 %>"></button>
+            <% }) %>
+          </div>
+          <button class="tslider__nav is-next" aria-label="next">
+            <svg viewBox="0 0 24 24" width="16" height="16"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+<% } %>

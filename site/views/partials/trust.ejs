@@ -1,0 +1,12 @@
+<% if (home.trust && home.trust.enabled && (home.trust.items || []).length) { %>
+<section class="trust" aria-label="confiance">
+  <div class="container trust__inner">
+    <% (home.trust.items || []).forEach(item => { %>
+      <div class="trust__item">
+        <div class="trust__value"><%= esc(item.value) %></div>
+        <div class="trust__label"><%= esc(item.label) %></div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+<% } %>

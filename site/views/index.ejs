@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>" dir="<%= dir %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <meta name="description" content="<%= esc(home.metaDescription) %>">
+  <link rel="icon" type="image/svg+xml" href="<%= mediaUrl(config.favicon) %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&family=Cairo:wght@400..900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --c-primary: <%= cssval(config.primaryColor, '#FFA502') %>;
+      --c-primary-dark: <%= cssval(config.primaryDark, '#e08e00') %>;
+      --c-heading: <%= cssval(config.headingColor, '#251444') %>;
+      --c-text: <%= cssval(config.textColor, '#737177') %>;
+      --c-bg: <%= cssval(config.lightBg, '#F7F5F1') %>;
+      --c-border: <%= cssval(config.borderColor, '#E6E2D9') %>;
+      --c-dark: <%= cssval(config.darkBg, '#251444') %>;
+      --font-body: "<%= fontname(config.bodyFont, 'Outfit') %>", system-ui, sans-serif;
+      --font-heading: "<%= fontname(config.headingFont, 'Outfit') %>", system-ui, serif;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13 10h3l-.5 3H13v8h-3v-8H7.5v-3H10V8.5C10 6.6 11.4 5 13.5 5H16v3h-2c-.6 0-1 .4-1 1v1z"/></symbol>
+    <symbol id="i-twitter" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.4L2.3 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L7.9 3.9H6.1L17.8 20z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5.5" width="20" height="13" rx="3.5" fill="currentColor"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#fff"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5C4.98 5.417 3.428 6.97 1.51 6.97C.68 6.97 0 6.29 0 5.47c0-.82.68-1.49 1.51-1.49.82 0 1.49.67 1.49 1.49zM0 8.5h3V22H0zM8 8.5h2.8v1.84h.04c.39-.74 1.35-1.84 3.36-1.84 3.6 0 4.3 2.37 4.3 5.45V22h-3v-6.05c0-1.44-.03-3.3-2.01-3.3-2.02 0-2.33 1.58-2.33 3.2V22H8z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.5 2c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5 11-11" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3 1.1-6.5L2.6 9.3l6.5-.9z"/></symbol>
+    <symbol id="i-star-empty" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3 1.1-6.5L2.6 9.3l6.5-.9z" opacity=".25"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8c1.4 2.9 3.6 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.9.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10 21 3 14 3 5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.4.2 2.7.6 3.9.1.4 0 .8-.3 1.1l-2.2 2.2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3.5 6.5L12 13l8.5-6.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M3 12h16M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 12h18M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  </svg>
+
+  <%- include('partials/topbar') %>
+  <%- include('partials/header') %>
+
+  <main id="accueil">
+    <%- include('partials/hero') %>
+    <%- include('partials/trust') %>
+    <%- include('partials/about') %>
+    <%- include('partials/services') %>
+    <%- include('partials/plans') %>
+    <%- include('partials/specs') %>
+    <%- include('partials/steps') %>
+    <%- include('partials/faq') %>
+    <%- include('partials/testimonials') %>
+    <%- include('partials/news') %>
+    <%- include('partials/cta') %>
+    <%- include('partials/order') %>
+    <%- include('partials/newsletter') %>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    window.SITE = {
+      locale: '<%= locale %>',
+      orderEndpoint: '/api/order',
+      newsletterEndpoint: '/api/newsletter'
+    };
+  </script>
+  <script src="/js/site.js"></script>
+</body>
+</html>

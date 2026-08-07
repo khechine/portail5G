@@ -1,0 +1,98 @@
+# =============================================================================
+#  Docker Compose -- Portail 5G Topnet
+#  Services :
+#    strapi   -> CMS / API         (port interne 1337)
+#    site     -> Frontend Express  (port interne 3000)
+#    nginx    -> Reverse proxy     (ports publics 80 / 443)
+# =============================================================================
+
+services:
+
+  # ---------------------------------------------------------------------------
+  #  Strapi CMS
+  # ---------------------------------------------------------------------------
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portail5g_strapi
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 1337
+    volumes:
+      # Persistance SQLite + uploads
+      - strapi_data:/app/.tmp
+      - strapi_uploads:/app/public/uploads
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:1337/_health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # ---------------------------------------------------------------------------
+  #  Frontend site (Express/EJS) -- FR & AR
+  # ---------------------------------------------------------------------------
+  site:
+    build:
+      context: ./site
+      dockerfile: Dockerfile
+    container_name: portail5g_site
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      STRAPI_URL: http://strapi:1337
+    networks:
+      - internal
+    depends_on:
+      strapi:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ---------------------------------------------------------------------------
+  #  Nginx -- reverse proxy + SSL
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: portail5g_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Config nginx
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/box5g.conf:ro
+      # Certificats SSL (montes depuis /home/master/portail5GV1-prod/nginx/)
+      - ./nginx/certs:/etc/nginx/certs:ro
+    networks:
+      - internal
+    depends_on:
+      - strapi
+      - site
+
+# -----------------------------------------------------------------------------
+#  Volumes
+# -----------------------------------------------------------------------------
+volumes:
+  strapi_data:
+    driver: local
+  strapi_uploads:
+    driver: local
+
+# -----------------------------------------------------------------------------
+#  Reseaux
+# -----------------------------------------------------------------------------
+networks:
+  internal:
+    driver: bridge

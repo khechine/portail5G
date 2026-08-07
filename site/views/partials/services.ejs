@@ -1,0 +1,42 @@
+<% if (home.services && home.services.enabled && (home.services.items || []).length) { %>
+<section class="section services">
+  <div class="container">
+    <div class="section__head">
+      <% if (home.services.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.services.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.services.title) { %><%- nl2br(esc(home.services.title)) %><% } %>
+        <% if (home.services.titleHighlight) { %><em><%= esc(home.services.titleHighlight) %></em><% } %>
+      </h2>
+      <% if (home.services.subtitle) { %>
+        <p class="section__subtitle"><%= esc(home.services.subtitle) %></p>
+      <% } %>
+    </div>
+
+    <div class="services__grid">
+      <% (home.services.items || []).forEach(item => { %>
+        <article class="service-card">
+          <% if (item.icon) { %>
+            <div class="service-card__icon" aria-hidden="true"><%= item.icon %></div>
+          <% } %>
+          <h3 class="service-card__title"><%= esc(item.title) %></h3>
+          <% if (item.description) { %>
+            <p class="service-card__text"><%= esc(item.description) %></p>
+          <% } %>
+          <% if ((item.features || []).length) { %>
+            <ul class="service-card__list">
+              <% (item.features || []).forEach(f => { %>
+                <li>
+                  <span class="ic-check"><svg viewBox="0 0 24 24" width="13" height="13"><use href="#i-check"></use></svg></span>
+                  <span><%= esc(f.text) %></span>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>

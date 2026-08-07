@@ -1,0 +1,41 @@
+<% if (home.about && home.about.enabled) { %>
+<section class="section about" id="apropos">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__media">
+        <% if (home.about.image) { %>
+          <img src="<%= mediaUrl(home.about.image) %>" alt="<%= esc(config.siteName) %>">
+        <% } %>
+      </div>
+      <div class="about__content">
+        <% if (home.about.tagline) { %>
+          <span class="tagline"><span class="tagline__line"></span><%= esc(home.about.tagline) %><span class="tagline__line"></span></span>
+        <% } %>
+        <h2 class="section__title">
+          <% if (home.about.title) { %><%- nl2br(esc(home.about.title)) %><% } %>
+          <% if (home.about.titleHighlight) { %><em><%= esc(home.about.titleHighlight) %></em><% } %>
+        </h2>
+        <% if (home.about.text) { %>
+          <p class="about__text"><%= esc(home.about.text) %></p>
+        <% } %>
+        <% if ((home.about.features || []).length) { %>
+          <ul class="about__list">
+            <% (home.about.features || []).forEach(f => { %>
+              <li>
+                <span class="ic-check"><svg viewBox="0 0 24 24" width="13" height="13"><use href="#i-check"></use></svg></span>
+                <span><%= esc(f.text) %></span>
+              </li>
+            <% }) %>
+          </ul>
+        <% } %>
+        <% if (home.about.buttonLabel) { %>
+          <a class="btn btn--primary" href="<%= esc(home.about.buttonUrl) %>">
+            <span><%= esc(home.about.buttonLabel) %></span>
+            <svg viewBox="0 0 24 24" width="15" height="15"><use href="#i-arrow-right"></use></svg>
+          </a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>

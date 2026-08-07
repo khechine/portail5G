@@ -129,3 +129,7 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+# SSL certificates
+nginx/certs/*.pem
+nginx/certs/*.key
+nginx/certs/*.cer

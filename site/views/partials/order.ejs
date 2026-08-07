@@ -1,0 +1,99 @@
+<% if (home.order && home.order.enabled) { %>
+<section class="section order" id="commander">
+  <div class="container order__container">
+    <div class="section__head">
+      <% if (home.order.tagline) { %>
+        <span class="tagline"><span class="tagline__line"></span><%= esc(home.order.tagline) %><span class="tagline__line"></span></span>
+      <% } %>
+      <h2 class="section__title">
+        <% if (home.order.title) { %><%- nl2br(esc(home.order.title)) %><% } %>
+        <% if (home.order.titleHighlight) { %><em><%= esc(home.order.titleHighlight) %></em><% } %>
+      </h2>
+      <% if (home.order.subtitle) { %>
+        <p class="section__subtitle"><%= esc(home.order.subtitle) %></p>
+      <% } %>
+    </div>
+
+    <div class="order__card">
+      <form class="order__form" id="order-form" novalidate>
+        <input type="hidden" name="locale" value="<%= locale %>">
+
+        <div class="order__grid">
+          <div class="field">
+            <label for="f-firstname"><%= esc(home.order.labelFirstname) %></label>
+            <input id="f-firstname" name="firstname" type="text" placeholder="<%= esc(home.order.placeholderFirstname) %>" required>
+          </div>
+          <div class="field">
+            <label for="f-lastname"><%= esc(home.order.labelLastname) %></label>
+            <input id="f-lastname" name="lastname" type="text" placeholder="<%= esc(home.order.placeholderLastname) %>" required>
+          </div>
+          <div class="field">
+            <label for="f-phone"><%= esc(home.order.labelPhone) %></label>
+            <input id="f-phone" name="phone" type="tel" placeholder="<%= esc(home.order.placeholderPhone) %>" required>
+          </div>
+          <div class="field">
+            <label for="f-governorate"><%= esc(home.order.labelGovernorate) %></label>
+            <select id="f-governorate" name="governorate" required>
+              <option value="" selected disabled><%= esc(home.order.placeholderGovernorate) %></option>
+              <% (home.order.governorates || []).forEach(g => { %>
+                <option value="<%= esc(g.text) %>"><%= esc(g.text) %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="f-address"><%= esc(home.order.labelAddress) %></label>
+            <input id="f-address" name="address" type="text" placeholder="<%= esc(home.order.placeholderAddress) %>" required>
+          </div>
+
+          <div class="field field--full">
+            <span class="field__label"><%= esc(home.order.labelExisting) %></span>
+            <div class="radio-row">
+              <label class="radio">
+                <input type="radio" name="existingSubscriber" value="yes" checked>
+                <span><%= esc(home.order.optionYes) %></span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="existingSubscriber" value="no">
+                <span><%= esc(home.order.optionNo) %></span>
+              </label>
+            </div>
+          </div>
+
+          <% if ((home.plans && home.plans.groups || []).length) { %>
+          <div class="field field--full">
+            <span class="field__label"><%= esc(home.order.labelPlan) %></span>
+            <div class="plan-picker">
+              <% (home.plans.groups || []).forEach((g, gi) => {
+                   const card = (g.cards || []).find(c => c.recommended) || (g.cards || [])[0];
+              %>
+                <label class="plan-pick<%= gi === 1 ? ' is-rec' : '' %>">
+                  <input type="radio" name="plan" value="<%= esc(g.name) %>"<%= gi === 1 ? ' checked' : '' %>>
+                  <span class="plan-pick__speed"><%= esc(g.name) %></span>
+                  <% if (card) { %>
+                    <span class="plan-pick__price"><%= esc(card.price) %> <small><%= esc(card.currency) %></small></span>
+                  <% } %>
+                  <% if (card && card.recommended) { %><span class="plan-pick__tag"><%= esc(card.badge || '★') %></span><% } %>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <button class="btn btn--primary btn--block btn--lg" type="submit">
+          <span><%= esc(home.order.submitLabel) %></span>
+          <svg viewBox="0 0 24 24" width="15" height="15"><use href="#i-arrow-right"></use></svg>
+        </button>
+
+        <p class="order__msg" id="order-msg" role="status"
+          data-required="<%= esc(home.order.msgRequired) %>"
+          data-success="<%= esc(home.order.msgSuccess) %>"
+          data-error="<%= esc(home.order.msgError) %>"></p>
+        <% if (home.order.disclaimer) { %>
+          <p class="order__disclaimer"><%= esc(home.order.disclaimer) %></p>
+        <% } %>
+      </form>
+    </div>
+  </div>
+</section>
+<% } %>
