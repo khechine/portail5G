@@ -3,7 +3,6 @@
 # ============================================================
 FROM node:20-alpine AS builder
 
-# Outils de build requis pour les dépendances natives (better-sqlite3)
 RUN apk add --no-cache python3 make g++
 
 WORKDIR /app
@@ -20,13 +19,12 @@ FROM node:20-alpine
 ENV NODE_ENV=production
 WORKDIR /app
 
-# Outils de build pour la réinstallation native en production
 RUN apk add --no-cache python3 make g++
 
 COPY package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/build ./build
 COPY --from=builder /app/config ./config
 COPY --from=builder /app/database ./database
 COPY --from=builder /app/public ./public
