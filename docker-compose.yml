@@ -29,11 +29,11 @@ services:
     networks:
       - internal
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:1337/_health"]
-      interval: 30s
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:1337/admin || exit 1"]
+      interval: 15s
       timeout: 10s
-      retries: 5
-      start_period: 60s
+      retries: 10
+      start_period: 40s
 
   # ---------------------------------------------------------------------------
   #  Frontend site (Express/EJS) -- FR & AR
@@ -54,11 +54,11 @@ services:
       strapi:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
-      interval: 30s
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1"]
+      interval: 15s
       timeout: 10s
-      retries: 3
-      start_period: 30s
+      retries: 5
+      start_period: 20s
 
   # ---------------------------------------------------------------------------
   #  Nginx -- reverse proxy + SSL
@@ -73,7 +73,7 @@ services:
     volumes:
       # Config nginx
       - ./nginx/nginx.conf:/etc/nginx/conf.d/box5g.conf:ro
-      # Certificats SSL (montes depuis /home/master/portail5GV1-prod/nginx/)
+      # Certificats SSL (montes depuis ./nginx/certs/ sur le serveur)
       - ./nginx/certs:/etc/nginx/certs:ro
     networks:
       - internal
