@@ -5,7 +5,6 @@ module.exports = ({ env }) => [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       headers: '*',
       origin: env('CORS_ORIGIN', '*')
         .split(',')
