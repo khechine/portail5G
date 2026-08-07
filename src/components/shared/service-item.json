@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_service_items",
+  "info": {
+    "displayName": "Service Item",
+    "icon": "apps",
+    "description": "Une carte service (icône, titre, description, points forts)"
+  },
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "description": "Emoji ou classe d'icône (ex : 🛰️, fa-rocket, wifi)."
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.list-item"
+    }
+  }
+}

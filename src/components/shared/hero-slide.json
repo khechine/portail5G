@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_shared_hero_slides",
+  "info": {
+    "displayName": "Hero Slide",
+    "icon": "layout",
+    "description": "Une slide du slider principal (bannière)"
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text",
+      "description": "Titre principal. Utilisez un retour à la ligne pour passer à la ligne."
+    },
+    "titleHighlight": {
+      "type": "text",
+      "description": "Partie du titre affichée en couleur (dégradé rouge)."
+    },
+    "text": {
+      "type": "text"
+    },
+    "btnPrimaryLabel": {
+      "type": "string"
+    },
+    "btnPrimaryUrl": {
+      "type": "string"
+    },
+    "btnSecondaryLabel": {
+      "type": "string"
+    },
+    "btnSecondaryUrl": {
+      "type": "string"
+    }
+  }
+}

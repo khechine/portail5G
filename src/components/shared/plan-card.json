@@ -1,0 +1,64 @@
+{
+  "collectionName": "components_shared_plan_cards",
+  "info": {
+    "displayName": "Plan Card",
+    "icon": "price-tag",
+    "description": "Une offre / carte tarifaire"
+  },
+  "attributes": {
+    "speed": {
+      "type": "string",
+      "description": "Valeur de débit affichée en grand (ex : 50)."
+    },
+    "speedUnit": {
+      "type": "string",
+      "description": "Unité du débit (ex : M)."
+    },
+    "speedLabel": {
+      "type": "string",
+      "description": "Libellé du débit (ex : Débit descendant)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Nom de l'offre (ex : Famille connectée)."
+    },
+    "price": {
+      "type": "string",
+      "description": "Prix (ex : 69.9)."
+    },
+    "currency": {
+      "type": "string",
+      "description": "Devise (ex : DT)."
+    },
+    "period": {
+      "type": "string",
+      "description": "Période (ex : / mois · 24 mois)."
+    },
+    "badge": {
+      "type": "string",
+      "description": "Badge optionnel (ex : ⭐ Recommandé)."
+    },
+    "recommended": {
+      "type": "boolean",
+      "default": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.list-item"
+    },
+    "buttonLabel": {
+      "type": "string"
+    },
+    "buttonUrl": {
+      "type": "string"
+    }
+  }
+}

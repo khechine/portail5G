@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "icon": "layout",
+    "description": "Slider principal (bannières)"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.hero-slide"
+    }
+  }
+}

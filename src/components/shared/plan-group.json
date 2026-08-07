@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_plan_groups",
+  "info": {
+    "displayName": "Plan Group",
+    "icon": "bulletList",
+    "description": "Un groupe d'offres (onglet). Ex : '30M', '50M', '100M'."
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "description": "Nom de l'onglet (ex : 50M)."
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.plan-card"
+    }
+  }
+}

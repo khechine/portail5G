@@ -1,0 +1,88 @@
+{
+  "collectionName": "components_shared_order_sections",
+  "info": {
+    "displayName": "Order Section",
+    "icon": "envelope",
+    "description": "Formulaire de commande"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "labelFirstname": {
+      "type": "string"
+    },
+    "placeholderFirstname": {
+      "type": "string"
+    },
+    "labelLastname": {
+      "type": "string"
+    },
+    "placeholderLastname": {
+      "type": "string"
+    },
+    "labelPhone": {
+      "type": "string"
+    },
+    "placeholderPhone": {
+      "type": "string"
+    },
+    "labelGovernorate": {
+      "type": "string"
+    },
+    "placeholderGovernorate": {
+      "type": "string"
+    },
+    "labelAddress": {
+      "type": "string"
+    },
+    "placeholderAddress": {
+      "type": "string"
+    },
+    "labelExisting": {
+      "type": "string"
+    },
+    "optionYes": {
+      "type": "string"
+    },
+    "optionNo": {
+      "type": "string"
+    },
+    "labelPlan": {
+      "type": "string"
+    },
+    "submitLabel": {
+      "type": "string"
+    },
+    "disclaimer": {
+      "type": "text"
+    },
+    "msgRequired": {
+      "type": "string"
+    },
+    "msgSuccess": {
+      "type": "string"
+    },
+    "msgError": {
+      "type": "string"
+    },
+    "governorates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.list-item"
+    }
+  }
+}

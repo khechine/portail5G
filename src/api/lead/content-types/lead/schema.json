@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Demandes de commande",
+    "description": "Les commandes Box 5G envoyées depuis le site."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "governorate": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "existingSubscriber": {
+      "type": "string",
+      "description": "Oui / Non — déjà abonné Topnet."
+    },
+    "plan": {
+      "type": "string",
+      "description": "Offre choisie (ex : 50M)."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Langue du formulaire (fr / ar)."
+    }
+  }
+}

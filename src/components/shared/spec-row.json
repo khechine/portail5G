@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_spec_rows",
+  "info": {
+    "displayName": "Spec Row",
+    "icon": "table",
+    "description": "Une ligne de la fiche technique"
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "highlight": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

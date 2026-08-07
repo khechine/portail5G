@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_steps_sections",
+  "info": {
+    "displayName": "Steps Section",
+    "icon": "number",
+    "description": "Étapes de mise en marche + boîte d'aide"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.step"
+    },
+    "helpTitle": {
+      "type": "string"
+    },
+    "helpText": {
+      "type": "text"
+    }
+  }
+}

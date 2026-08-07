@@ -1,0 +1,189 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_configs",
+  "info": {
+    "singularName": "site-config",
+    "pluralName": "site-configs",
+    "displayName": "Configuration du site",
+    "description": "Identité, couleurs, polices, topbar, navigation, footer."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "primaryColor": {
+      "type": "string",
+      "default": "#FFA502",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "primaryDark": {
+      "type": "string",
+      "default": "#e08e00",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "headingColor": {
+      "type": "string",
+      "default": "#251444",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#737177",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "lightBg": {
+      "type": "string",
+      "default": "#F7F5F1",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#E6E2D9",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "darkBg": {
+      "type": "string",
+      "default": "#251444",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "bodyFont": {
+      "type": "string",
+      "default": "Outfit",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "headingFont": {
+      "type": "string",
+      "default": "Outfit",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "arabicFont": {
+      "type": "string",
+      "default": "Cairo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "string"
+    },
+    "topbarLeft": {
+      "type": "string",
+      "description": "Texte affiché à gauche de la topbar."
+    },
+    "navItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "description": "Libellé du bouton 'Commander' dans le header."
+    },
+    "ctaUrl": {
+      "type": "string"
+    },
+    "langLabel": {
+      "type": "string",
+      "description": "Libellé du sélecteur de langue (ex : العربية)."
+    },
+    "footerAbout": {
+      "type": "text",
+      "description": "Description courte dans le footer."
+    },
+    "socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link",
+      "description": "Réseaux sociaux. Le champ label accepte : facebook, twitter, instagram, youtube, linkedin, tiktok."
+    },
+    "footerColumns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.footer-column"
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "legalLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    }
+  }
+}

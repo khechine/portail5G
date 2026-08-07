@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_testimonials_sections",
+  "info": {
+    "displayName": "Testimonials Section",
+    "icon": "user",
+    "description": "Avis clients"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.testimonial"
+    }
+  }
+}

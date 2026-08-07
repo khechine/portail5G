@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_shared_newsletter_sections",
+  "info": {
+    "displayName": "Newsletter Section",
+    "icon": "mail",
+    "description": "Inscription newsletter"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "buttonLabel": {
+      "type": "string"
+    },
+    "msgEmail": {
+      "type": "string"
+    },
+    "msgSuccess": {
+      "type": "string"
+    },
+    "msgError": {
+      "type": "string"
+    }
+  }
+}

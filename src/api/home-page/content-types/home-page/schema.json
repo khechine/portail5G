@@ -1,0 +1,91 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Page d'accueil (Box 5G)",
+    "description": "Toutes les sections de la landing page. Chaque section peut être activée / désactivée."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.hero-section"
+    },
+    "trust": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.trust-section"
+    },
+    "about": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.about-section"
+    },
+    "services": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.services-section"
+    },
+    "plans": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.plans-section"
+    },
+    "specs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.specs-section"
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.steps-section"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.faq-section"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.testimonials-section"
+    },
+    "news": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.news-section"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-section"
+    },
+    "order": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.order-section"
+    },
+    "newsletter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.newsletter-section"
+    }
+  }
+}

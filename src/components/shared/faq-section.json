@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_faq_sections",
+  "info": {
+    "displayName": "FAQ Section",
+    "icon": "question",
+    "description": "Foire aux questions"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.faq-item"
+    }
+  }
+}

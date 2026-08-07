@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_trust_items",
+  "info": {
+    "displayName": "Trust Item",
+    "icon": "check",
+    "description": "Un indicateur du bandeau de confiance (ex : 5G + 4G / Réseau hybride)"
+  },
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

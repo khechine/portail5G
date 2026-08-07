@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_news_sections",
+  "info": {
+    "displayName": "News Section",
+    "icon": "calendar",
+    "description": "Actualités / blog"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.news-post"
+    }
+  }
+}

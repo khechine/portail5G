@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_steps",
+  "info": {
+    "displayName": "Step",
+    "icon": "number",
+    "description": "Une étape de mise en marche"
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

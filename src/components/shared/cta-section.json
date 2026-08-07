@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_shared_cta_sections",
+  "info": {
+    "displayName": "CTA Section",
+    "icon": "megaphone",
+    "description": "Bandeau d'appel à l'action final"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "btnLabel": {
+      "type": "string"
+    },
+    "btnUrl": {
+      "type": "string"
+    },
+    "btnSecondaryLabel": {
+      "type": "string"
+    },
+    "btnSecondaryUrl": {
+      "type": "string"
+    }
+  }
+}

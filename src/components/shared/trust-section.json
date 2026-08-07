@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_trust_sections",
+  "info": {
+    "displayName": "Trust Section",
+    "icon": "check",
+    "description": "Bandeau de confiance (stats)"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.trust-item"
+    }
+  }
+}

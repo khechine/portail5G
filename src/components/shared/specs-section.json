@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_specs_sections",
+  "info": {
+    "displayName": "Specs Section",
+    "icon": "table",
+    "description": "Fiche technique de la Box"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "rows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.spec-row"
+    }
+  }
+}

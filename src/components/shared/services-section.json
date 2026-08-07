@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_services_sections",
+  "info": {
+    "displayName": "Services Section",
+    "icon": "apps",
+    "description": "Cartes services / offres"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.service-item"
+    }
+  }
+}

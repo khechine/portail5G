@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_shared_about_sections",
+  "info": {
+    "displayName": "About Section",
+    "icon": "information",
+    "description": "Section À propos"
+  },
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "titleHighlight": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.list-item"
+    },
+    "buttonLabel": {
+      "type": "string"
+    },
+    "buttonUrl": {
+      "type": "string"
+    }
+  }
+}
