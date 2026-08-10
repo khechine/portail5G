@@ -74,7 +74,7 @@ services:
       # Config nginx
       - ./nginx/nginx.conf:/etc/nginx/conf.d/box5g.conf:ro
       # Certificats SSL (montes depuis ./nginx/certs/ sur le serveur)
-      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/ssl:/etc/nginx/certs:ro
     networks:
       - internal
     depends_on:
