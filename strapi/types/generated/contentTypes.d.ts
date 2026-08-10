@@ -460,33 +460,108 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    about: Schema.Attribute.Component<'shared.about-section', false>;
+    about: Schema.Attribute.Component<'shared.about-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cta: Schema.Attribute.Component<'shared.cta-section', false>;
-    faq: Schema.Attribute.Component<'shared.faq-section', false>;
-    hero: Schema.Attribute.Component<'shared.hero-section', false>;
+    cta: Schema.Attribute.Component<'shared.cta-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    faq: Schema.Attribute.Component<'shared.faq-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero: Schema.Attribute.Component<'shared.hero-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::home-page.home-page'
     >;
-    metaDescription: Schema.Attribute.Text;
-    metaTitle: Schema.Attribute.String;
-    news: Schema.Attribute.Component<'shared.news-section', false>;
-    newsletter: Schema.Attribute.Component<'shared.newsletter-section', false>;
-    order: Schema.Attribute.Component<'shared.order-section', false>;
-    plans: Schema.Attribute.Component<'shared.plans-section', false>;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    news: Schema.Attribute.Component<'shared.news-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    newsletter: Schema.Attribute.Component<'shared.newsletter-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Schema.Attribute.Component<'shared.order-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    plans: Schema.Attribute.Component<'shared.plans-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    services: Schema.Attribute.Component<'shared.services-section', false>;
-    specs: Schema.Attribute.Component<'shared.specs-section', false>;
-    steps: Schema.Attribute.Component<'shared.steps-section', false>;
+    services: Schema.Attribute.Component<'shared.services-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    specs: Schema.Attribute.Component<'shared.specs-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    steps: Schema.Attribute.Component<'shared.steps-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     testimonials: Schema.Attribute.Component<
       'shared.testimonials-section',
       false
-    >;
-    trust: Schema.Attribute.Component<'shared.trust-section', false>;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    trust: Schema.Attribute.Component<'shared.trust-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -542,7 +617,12 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    address: Schema.Attribute.String;
+    address: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     arabicFont: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -564,12 +644,27 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'#E6E2D9'>;
-    copyright: Schema.Attribute.String;
+    copyright: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ctaLabel: Schema.Attribute.String;
-    ctaUrl: Schema.Attribute.String;
+    ctaLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ctaUrl: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     darkBg: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -577,15 +672,30 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'#251444'>;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     favicon: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
-    footerAbout: Schema.Attribute.Text;
-    footerColumns: Schema.Attribute.Component<'shared.footer-column', true>;
+    footerAbout: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerColumns: Schema.Attribute.Component<'shared.footer-column', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     headingColor: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -600,8 +710,18 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'Outfit'>;
-    langLabel: Schema.Attribute.String;
-    legalLinks: Schema.Attribute.Component<'shared.link', true>;
+    langLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    legalLinks: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     lightBg: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -620,8 +740,18 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
           localized: false;
         };
       }>;
-    navItems: Schema.Attribute.Component<'shared.link', true>;
-    phone: Schema.Attribute.String;
+    navItems: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     primaryColor: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -637,8 +767,18 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<'#e08e00'>;
     publishedAt: Schema.Attribute.DateTime;
-    siteName: Schema.Attribute.String;
-    socials: Schema.Attribute.Component<'shared.link', true>;
+    siteName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    socials: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     textColor: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -646,7 +786,12 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'#737177'>;
-    topbarLeft: Schema.Attribute.String;
+    topbarLeft: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

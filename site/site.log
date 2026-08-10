@@ -1,0 +1,5 @@
+
+> topnet-box5g-site@1.0.0 start
+> node server.js
+
+Topnet Box 5G site démarré sur http://localhost:3000 (FR: / | AR: /ar)

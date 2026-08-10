@@ -17,7 +17,12 @@
   },
   "attributes": {
     "siteName": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "logo": {
       "type": "media",
@@ -134,56 +139,121 @@
       }
     },
     "phone": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "topbarLeft": {
       "type": "string",
-      "description": "Texte affiché à gauche de la topbar."
+      "description": "Texte affiché à gauche de la topbar.",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "navItems": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.link"
+      "component": "shared.link",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ctaLabel": {
       "type": "string",
-      "description": "Libellé du bouton 'Commander' dans le header."
+      "description": "Libellé du bouton 'Commander' dans le header.",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ctaUrl": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "langLabel": {
       "type": "string",
-      "description": "Libellé du sélecteur de langue (ex : العربية)."
+      "description": "Libellé du sélecteur de langue (ex : العربية).",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "footerAbout": {
       "type": "text",
-      "description": "Description courte dans le footer."
+      "description": "Description courte dans le footer.",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "socials": {
       "type": "component",
       "repeatable": true,
       "component": "shared.link",
-      "description": "Réseaux sociaux. Le champ label accepte : facebook, twitter, instagram, youtube, linkedin, tiktok."
+      "description": "Réseaux sociaux. Le champ label accepte : facebook, twitter, instagram, youtube, linkedin, tiktok.",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "footerColumns": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.footer-column"
+      "component": "shared.footer-column",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "copyright": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "legalLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.link"
+      "component": "shared.link",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
