@@ -114,7 +114,8 @@ async function uploadAssets(app) {
 async function upsertDocument(app, uid, entries, { publish: shouldPublish } = {}) {
   const docs = app.documents(uid);
   const all = await docs.findMany();
-  const [canonical, ...extras] = all;
+  const [first, ...extras] = all;
+  let canonical = first;
   for (const extra of extras) {
     log(`  ✗ suppression document orphelin (${uid}) : ${extra.documentId}`);
     await docs.delete({ documentId: extra.documentId, locale: '*' });
