@@ -1,7 +1,7 @@
 'use strict';
 
 const STRAPI_URL = (process.env.STRAPI_URL || 'http://127.0.0.1:1337').replace(/\/$/, '');
-const STRAPI_PUBLIC_URL = (process.env.STRAPI_PUBLIC_URL || STRAPI_URL).replace(/\/$/, '');
+const STRAPI_PUBLIC_URL = (process.env.STRAPI_PUBLIC_URL !== undefined ? process.env.STRAPI_PUBLIC_URL : STRAPI_URL).replace(/\/$/, '');
 const CACHE_TTL = Number(process.env.CACHE_TTL_MS || 60000);
 
 const cache = new Map();

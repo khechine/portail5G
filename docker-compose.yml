@@ -48,6 +48,7 @@ services:
       NODE_ENV: production
       PORT: 3000
       STRAPI_URL: http://strapi:1337
+      STRAPI_PUBLIC_URL: ""
     networks:
       - internal
     depends_on:
