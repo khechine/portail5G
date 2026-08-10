@@ -30,6 +30,7 @@ COPY --from=builder /app/database ./database
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/src ./src
 COPY --from=builder /app/types ./types
+COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/favicon.png ./favicon.png
 
 EXPOSE 1337
