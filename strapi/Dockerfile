@@ -33,8 +33,10 @@ COPY --from=builder /app/types ./types
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/favicon.png ./favicon.png
 
-# Strapi v5 admin assets must be in build/admin/ to be served at /admin/
-RUN cp -r /app/build /tmp/_build && rm -rf /app/build && mkdir -p /app/build/admin && mv /tmp/_build/* /app/build/admin/ && rm -rf /tmp/_build
+# Strapi v5 serves admin assets from build/admin/ at /admin/
+RUN mkdir -p /app/build/admin && \
+    cp /app/build/index.html /app/build/admin/ && \
+    for f in /app/build/*.js /app/build/*.css; do [ -f "$f" ] && cp "$f" /app/build/admin/; done
 
 EXPOSE 1337
 
