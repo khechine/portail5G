@@ -33,11 +33,6 @@ COPY --from=builder /app/types ./types
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/favicon.png ./favicon.png
 
-# Strapi v5 serves admin assets from build/admin/ at /admin/
-RUN mkdir -p /app/build/admin && \
-    cp /app/build/index.html /app/build/admin/ && \
-    for f in /app/build/*.js /app/build/*.css; do [ -f "$f" ] && cp "$f" /app/build/admin/; done
-
 EXPOSE 1337
 
 CMD ["npm", "run", "start"]
