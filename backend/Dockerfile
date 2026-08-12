@@ -14,11 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p /app/media /app/staticfiles
+RUN mkdir -p /app/media /app/staticfiles && chmod +x /app/entrypoint.sh
 
 # Collect static files at build time
 RUN python manage.py collectstatic --noinput || true
 
 EXPOSE 8000
 
-CMD ["gunicorn", "portail5g.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120"]
+ENTRYPOINT ["/app/entrypoint.sh"]
+
