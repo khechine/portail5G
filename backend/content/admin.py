@@ -10,6 +10,7 @@ from .models import (
 @admin.register(HeroSlide)
 class HeroSlideAdmin(admin.ModelAdmin):
     list_display = ('order', 'badge', 'title', 'btn_primary_label')
+    list_display_links = ('title',)
     list_editable = ('order',)
     search_fields = ('badge', 'title', 'text')
 
@@ -17,12 +18,14 @@ class HeroSlideAdmin(admin.ModelAdmin):
 @admin.register(TrustItem)
 class TrustItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'value', 'label')
+    list_display_links = ('label',)
     list_editable = ('order',)
 
 
 @admin.register(ServiceItem)
 class ServiceItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'icon', 'title', 'description')
+    list_display_links = ('title',)
     list_editable = ('order',)
 
 
@@ -34,6 +37,7 @@ class PlanCardInline(admin.TabularInline):
 @admin.register(PlanGroup)
 class PlanGroupAdmin(admin.ModelAdmin):
     list_display = ('order', 'name')
+    list_display_links = ('name',)
     list_editable = ('order',)
     inlines = [PlanCardInline]
 
@@ -41,6 +45,7 @@ class PlanGroupAdmin(admin.ModelAdmin):
 @admin.register(PlanCard)
 class PlanCardAdmin(admin.ModelAdmin):
     list_display = ('order', 'group', 'title', 'speed', 'price', 'badge', 'recommended')
+    list_display_links = ('title',)
     list_filter = ('group', 'recommended')
     list_editable = ('order', 'price', 'recommended')
 
@@ -48,18 +53,21 @@ class PlanCardAdmin(admin.ModelAdmin):
 @admin.register(SpecRow)
 class SpecRowAdmin(admin.ModelAdmin):
     list_display = ('order', 'label', 'value', 'highlight')
+    list_display_links = ('label',)
     list_editable = ('order', 'highlight')
 
 
 @admin.register(StepItem)
 class StepItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'title', 'description')
+    list_display_links = ('title',)
     list_editable = ('order',)
 
 
 @admin.register(FaqItem)
 class FaqItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'question')
+    list_display_links = ('question',)
     list_editable = ('order',)
     search_fields = ('question', 'answer')
 
@@ -67,12 +75,14 @@ class FaqItemAdmin(admin.ModelAdmin):
 @admin.register(TestimonialItem)
 class TestimonialItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'author', 'role', 'rating')
+    list_display_links = ('author',)
     list_editable = ('order', 'rating')
 
 
 @admin.register(NewsItem)
 class NewsItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'title', 'date')
+    list_display_links = ('title',)
     list_editable = ('order',)
 
 
