@@ -97,7 +97,7 @@ function mediaUrl(media) {
 
 async function getSiteConfig(locale) {
   return cached(locale, 'site-config', () =>
-    getApi('/api/site-config', {
+    getApi('/api/site-config/', {
       locale,
       populate: SITE_CONFIG_POPULATE,
     })
@@ -106,7 +106,7 @@ async function getSiteConfig(locale) {
 
 async function getHomePage(locale) {
   return cached(locale, 'home-page', () =>
-    getApi('/api/home-page', {
+    getApi('/api/home-page/', {
       locale,
       status: 'published',
       populate: HOME_PAGE_POPULATE,
