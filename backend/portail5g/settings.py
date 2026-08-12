@@ -12,7 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ─── Security ────────────────────────────────────────────────────────────────
 SECRET_KEY = config('DJANGO_SECRET_KEY', default='django-insecure-changeme')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,backend').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',') if config('ALLOWED_HOSTS', default='*') != '*' else ['*']
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://box5g.topnet.tn,http://box5g.topnet.tn,http://localhost').split(',')
 
 # ─── Applications ─────────────────────────────────────────────────────────────
 INSTALLED_APPS = [
