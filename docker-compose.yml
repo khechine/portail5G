@@ -79,11 +79,11 @@ services:
     depends_on:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"require('net').createConnection(3000,'localhost').on('connect',function(){process.exit(0)}).on('error',function(){process.exit(1)})\""]
-      interval: 10s
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/ > /dev/null 2>&1 || exit 1"]
+      interval: 15s
       timeout: 5s
-      retries: 10
-      start_period: 30s
+      retries: 5
+      start_period: 40s
 
   # ---------------------------------------------------------------------------
   #  Admin UI (Next.js)
@@ -103,11 +103,11 @@ services:
     depends_on:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"require('net').createConnection(3001,'localhost').on('connect',function(){process.exit(0)}).on('error',function(){process.exit(1)})\""]
-      interval: 10s
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3001/ > /dev/null 2>&1 || exit 1"]
+      interval: 15s
       timeout: 5s
-      retries: 10
-      start_period: 60s
+      retries: 5
+      start_period: 90s
 
   # ---------------------------------------------------------------------------
   #  Nginx -- reverse proxy + SSL
