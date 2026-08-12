@@ -655,11 +655,350 @@ def seed_home_page():
         log(f'✅ HomePage {locale} {status}')
 
 
+def seed_explicit_models():
+    """
+    Crée les modèles séparés (HeroSlide, TrustItem, ServiceItem…)
+    et les lie aux objets HomePage via ManyToManyField.
+    Appelé uniquement une fois si les modèles sont vides.
+    """
+    from content.models import (
+        HeroSlide, TrustItem, ServiceItem,
+        PlanGroup, PlanCard, SpecRow, StepItem, FaqItem,
+        TestimonialItem, NewsItem,
+    )
+
+    # ── FR ────────────────────────────────────────────────────────────────────
+    hp_fr = HomePage.objects.get(locale='fr')
+    data_fr = HOME_PAGE_FR
+
+    # Hero slides
+    if not hp_fr.hero_slides.exists():
+        for i, slide in enumerate(data_fr['hero'].get('slides', [])):
+            s = HeroSlide.objects.create(
+                badge=slide.get('badge', ''),
+                title=slide.get('title', ''),
+                title_highlight=slide.get('titleHighlight', ''),
+                text=slide.get('text', ''),
+                btn_primary_label=slide.get('btnPrimaryLabel', ''),
+                btn_primary_url=slide.get('btnPrimaryUrl', ''),
+                btn_secondary_label=slide.get('btnSecondaryLabel', ''),
+                btn_secondary_url=slide.get('btnSecondaryUrl', ''),
+                order=i,
+            )
+            hp_fr.hero_slides.add(s)
+        log('✅ HeroSlide FR créés')
+
+    # Trust items
+    if not hp_fr.trust_items.exists():
+        for i, item in enumerate(data_fr['trust'].get('items', [])):
+            t = TrustItem.objects.create(value=item['value'], label=item['label'], order=i)
+            hp_fr.trust_items.add(t)
+        log('✅ TrustItem FR créés')
+
+    # About (scalar fields on HomePage)
+    ab = data_fr.get('about', {})
+    hp_fr.about_tagline = ab.get('tagline', '')
+    hp_fr.about_title = ab.get('title', '')
+    hp_fr.about_title_highlight = ab.get('titleHighlight', '')
+    hp_fr.about_text = ab.get('text', '')
+    hp_fr.about_button_label = ab.get('buttonLabel', '')
+    hp_fr.about_button_url = ab.get('buttonUrl', '')
+    hp_fr.about_features = ab.get('features', [])
+
+    # Services
+    sv = data_fr.get('services', {})
+    hp_fr.services_tagline = sv.get('tagline', '')
+    hp_fr.services_title = sv.get('title', '')
+    hp_fr.services_title_highlight = sv.get('titleHighlight', '')
+    hp_fr.services_subtitle = sv.get('subtitle', '')
+    if not hp_fr.services_items.exists():
+        for i, item in enumerate(sv.get('items', [])):
+            si = ServiceItem.objects.create(
+                icon=item.get('icon', ''),
+                title=item['title'],
+                description=item.get('description', ''),
+                features=item.get('features', []),
+                order=i,
+            )
+            hp_fr.services_items.add(si)
+        log('✅ ServiceItem FR créés')
+
+    # Plans
+    pl = data_fr.get('plans', {})
+    hp_fr.plans_tagline = pl.get('tagline', '')
+    hp_fr.plans_title = pl.get('title', '')
+    hp_fr.plans_title_highlight = pl.get('titleHighlight', '')
+    hp_fr.plans_subtitle = pl.get('subtitle', '')
+    hp_fr.plans_note = pl.get('note', '')
+    if not hp_fr.plans_groups.exists():
+        for gi, grp in enumerate(pl.get('groups', [])):
+            pg = PlanGroup.objects.create(name=grp['name'], order=gi)
+            for ci, card in enumerate(grp.get('cards', [])):
+                PlanCard.objects.create(
+                    group=pg,
+                    speed=str(card.get('speed', '')),
+                    speed_unit=card.get('speedUnit', 'M'),
+                    speed_label=card.get('speedLabel', 'Débit descendant'),
+                    title=card['title'],
+                    price=str(card['price']),
+                    currency=card.get('currency', 'DT'),
+                    period=card.get('period', '/ mois · 24 mois'),
+                    badge=card.get('badge', ''),
+                    recommended=card.get('recommended', False),
+                    button_label=card.get('buttonLabel', 'Commander'),
+                    button_url=card.get('buttonUrl', '#commander'),
+                    features=card.get('features', []),
+                    order=ci,
+                )
+            hp_fr.plans_groups.add(pg)
+        log('✅ PlanGroup + PlanCard FR créés')
+
+    # Specs
+    sp = data_fr.get('specs', {})
+    hp_fr.specs_tagline = sp.get('tagline', '')
+    hp_fr.specs_title = sp.get('title', '')
+    hp_fr.specs_title_highlight = sp.get('titleHighlight', '')
+    if not hp_fr.specs_rows.exists():
+        for i, row in enumerate(sp.get('rows', [])):
+            sr = SpecRow.objects.create(
+                label=row['label'], value=row['value'],
+                highlight=row.get('highlight', False), order=i,
+            )
+            hp_fr.specs_rows.add(sr)
+        log('✅ SpecRow FR créés')
+
+    # Steps
+    st = data_fr.get('steps', {})
+    hp_fr.steps_tagline = st.get('tagline', '')
+    hp_fr.steps_title = st.get('title', '')
+    hp_fr.steps_title_highlight = st.get('titleHighlight', '')
+    hp_fr.steps_help_title = st.get('helpTitle', '')
+    hp_fr.steps_help_text = st.get('helpText', '')
+    if not hp_fr.steps_items.exists():
+        for i, step in enumerate(st.get('steps', [])):
+            si = StepItem.objects.create(
+                title=step['title'], description=step.get('description', ''), order=i,
+            )
+            hp_fr.steps_items.add(si)
+        log('✅ StepItem FR créés')
+
+    # FAQ
+    fq = data_fr.get('faq', {})
+    hp_fr.faq_tagline = fq.get('tagline', '')
+    hp_fr.faq_title = fq.get('title', '')
+    hp_fr.faq_title_highlight = fq.get('titleHighlight', '')
+    if not hp_fr.faq_items.exists():
+        for i, item in enumerate(fq.get('items', [])):
+            fi = FaqItem.objects.create(
+                question=item['question'], answer=item['answer'], order=i,
+            )
+            hp_fr.faq_items.add(fi)
+        log('✅ FaqItem FR créés')
+
+    # Testimonials
+    tm = data_fr.get('testimonials', {})
+    hp_fr.testimonials_tagline = tm.get('tagline', '')
+    hp_fr.testimonials_title = tm.get('title', '')
+    hp_fr.testimonials_title_highlight = tm.get('titleHighlight', '')
+    if not hp_fr.testimonials_items.exists():
+        for i, item in enumerate(tm.get('items', [])):
+            ti = TestimonialItem.objects.create(
+                quote=item['quote'], author=item['author'],
+                role=item.get('role', ''), rating=item.get('rating', 5), order=i,
+            )
+            hp_fr.testimonials_items.add(ti)
+        log('✅ TestimonialItem FR créés')
+
+    # News
+    nw = data_fr.get('news', {})
+    hp_fr.news_tagline = nw.get('tagline', '')
+    hp_fr.news_title = nw.get('title', '')
+    hp_fr.news_title_highlight = nw.get('titleHighlight', '')
+    if not hp_fr.news_items.exists():
+        for i, item in enumerate(nw.get('items', [])):
+            ni = NewsItem.objects.create(
+                title=item['title'], excerpt=item.get('excerpt', ''),
+                date=item.get('date', ''), link=item.get('link', '#'), order=i,
+            )
+            hp_fr.news_items.add(ni)
+        log('✅ NewsItem FR créés')
+
+    # CTA
+    ct = data_fr.get('cta', {})
+    hp_fr.cta_title = ct.get('title', '')
+    hp_fr.cta_subtitle = ct.get('subtitle', '')
+    hp_fr.cta_btn_label = ct.get('btnLabel', '')
+    hp_fr.cta_btn_url = ct.get('btnUrl', '')
+    hp_fr.cta_btn_secondary_label = ct.get('btnSecondaryLabel', '')
+    hp_fr.cta_btn_secondary_url = ct.get('btnSecondaryUrl', '')
+
+    hp_fr.save()
+    log('✅ HomePage FR scalar fields sauvegardés')
+
+    # ── AR ────────────────────────────────────────────────────────────────────
+    hp_ar = HomePage.objects.get(locale='ar')
+    data_ar = HOME_PAGE_AR
+
+    if not hp_ar.hero_slides.exists():
+        for i, slide in enumerate(data_ar['hero'].get('slides', [])):
+            s = HeroSlide.objects.create(
+                badge=slide.get('badge', ''),
+                title=slide.get('title', ''),
+                title_highlight=slide.get('titleHighlight', ''),
+                text=slide.get('text', ''),
+                btn_primary_label=slide.get('btnPrimaryLabel', ''),
+                btn_primary_url=slide.get('btnPrimaryUrl', ''),
+                btn_secondary_label=slide.get('btnSecondaryLabel', ''),
+                btn_secondary_url=slide.get('btnSecondaryUrl', ''),
+                order=i,
+            )
+            hp_ar.hero_slides.add(s)
+        log('✅ HeroSlide AR créés')
+
+    if not hp_ar.trust_items.exists():
+        for i, item in enumerate(data_ar['trust'].get('items', [])):
+            t = TrustItem.objects.create(value=item['value'], label=item['label'], order=i + 10)
+            hp_ar.trust_items.add(t)
+        log('✅ TrustItem AR créés')
+
+    ab_ar = data_ar.get('about', {})
+    hp_ar.about_tagline = ab_ar.get('tagline', '')
+    hp_ar.about_title = ab_ar.get('title', '')
+    hp_ar.about_title_highlight = ab_ar.get('titleHighlight', '')
+    hp_ar.about_text = ab_ar.get('text', '')
+    hp_ar.about_button_label = ab_ar.get('buttonLabel', '')
+    hp_ar.about_button_url = ab_ar.get('buttonUrl', '')
+    hp_ar.about_features = ab_ar.get('features', [])
+
+    sv_ar = data_ar.get('services', {})
+    hp_ar.services_tagline = sv_ar.get('tagline', '')
+    hp_ar.services_title = sv_ar.get('title', '')
+    hp_ar.services_title_highlight = sv_ar.get('titleHighlight', '')
+    hp_ar.services_subtitle = sv_ar.get('subtitle', '')
+    if not hp_ar.services_items.exists():
+        for i, item in enumerate(sv_ar.get('items', [])):
+            si = ServiceItem.objects.create(
+                icon=item.get('icon', ''),
+                title=item['title'],
+                description=item.get('description', ''),
+                features=item.get('features', []),
+                order=i + 10,
+            )
+            hp_ar.services_items.add(si)
+        log('✅ ServiceItem AR créés')
+
+    pl_ar = data_ar.get('plans', {})
+    hp_ar.plans_tagline = pl_ar.get('tagline', '')
+    hp_ar.plans_title = pl_ar.get('title', '')
+    hp_ar.plans_title_highlight = pl_ar.get('titleHighlight', '')
+    hp_ar.plans_subtitle = pl_ar.get('subtitle', '')
+    hp_ar.plans_note = pl_ar.get('note', '')
+    if not hp_ar.plans_groups.exists():
+        for gi, grp in enumerate(pl_ar.get('groups', [])):
+            pg = PlanGroup.objects.create(name=grp['name'], order=gi + 10)
+            for ci, card in enumerate(grp.get('cards', [])):
+                PlanCard.objects.create(
+                    group=pg,
+                    speed=str(card.get('speed', '')),
+                    speed_unit=card.get('speedUnit', 'M'),
+                    speed_label=card.get('speedLabel', 'سرعة التحميل'),
+                    title=card['title'],
+                    price=str(card['price']),
+                    currency=card.get('currency', 'د.ت'),
+                    period=card.get('period', '/ شهرياً · 24 شهراً'),
+                    badge=card.get('badge', ''),
+                    recommended=card.get('recommended', False),
+                    button_label=card.get('buttonLabel', 'اطلب'),
+                    button_url=card.get('buttonUrl', '#commander'),
+                    features=card.get('features', []),
+                    order=ci,
+                )
+            hp_ar.plans_groups.add(pg)
+        log('✅ PlanGroup + PlanCard AR créés')
+
+    sp_ar = data_ar.get('specs', {})
+    hp_ar.specs_tagline = sp_ar.get('tagline', '')
+    hp_ar.specs_title = sp_ar.get('title', '')
+    hp_ar.specs_title_highlight = sp_ar.get('titleHighlight', '')
+    if not hp_ar.specs_rows.exists():
+        for i, row in enumerate(sp_ar.get('rows', [])):
+            sr = SpecRow.objects.create(
+                label=row['label'], value=row['value'],
+                highlight=row.get('highlight', False), order=i + 10,
+            )
+            hp_ar.specs_rows.add(sr)
+        log('✅ SpecRow AR créés')
+
+    st_ar = data_ar.get('steps', {})
+    hp_ar.steps_tagline = st_ar.get('tagline', '')
+    hp_ar.steps_title = st_ar.get('title', '')
+    hp_ar.steps_title_highlight = st_ar.get('titleHighlight', '')
+    hp_ar.steps_help_title = st_ar.get('helpTitle', '')
+    hp_ar.steps_help_text = st_ar.get('helpText', '')
+    if not hp_ar.steps_items.exists():
+        for i, step in enumerate(st_ar.get('steps', [])):
+            si = StepItem.objects.create(
+                title=step['title'], description=step.get('description', ''), order=i + 10,
+            )
+            hp_ar.steps_items.add(si)
+        log('✅ StepItem AR créés')
+
+    fq_ar = data_ar.get('faq', {})
+    hp_ar.faq_tagline = fq_ar.get('tagline', '')
+    hp_ar.faq_title = fq_ar.get('title', '')
+    hp_ar.faq_title_highlight = fq_ar.get('titleHighlight', '')
+    if not hp_ar.faq_items.exists():
+        for i, item in enumerate(fq_ar.get('items', [])):
+            fi = FaqItem.objects.create(
+                question=item['question'], answer=item['answer'], order=i + 10,
+            )
+            hp_ar.faq_items.add(fi)
+        log('✅ FaqItem AR créés')
+
+    tm_ar = data_ar.get('testimonials', {})
+    hp_ar.testimonials_tagline = tm_ar.get('tagline', '')
+    hp_ar.testimonials_title = tm_ar.get('title', '')
+    hp_ar.testimonials_title_highlight = tm_ar.get('titleHighlight', '')
+    if not hp_ar.testimonials_items.exists():
+        for i, item in enumerate(tm_ar.get('items', [])):
+            ti = TestimonialItem.objects.create(
+                quote=item['quote'], author=item['author'],
+                role=item.get('role', ''), rating=item.get('rating', 5), order=i + 10,
+            )
+            hp_ar.testimonials_items.add(ti)
+        log('✅ TestimonialItem AR créés')
+
+    nw_ar = data_ar.get('news', {})
+    hp_ar.news_tagline = nw_ar.get('tagline', '')
+    hp_ar.news_title = nw_ar.get('title', '')
+    hp_ar.news_title_highlight = nw_ar.get('titleHighlight', '')
+    if not hp_ar.news_items.exists():
+        for i, item in enumerate(nw_ar.get('items', [])):
+            ni = NewsItem.objects.create(
+                title=item['title'], excerpt=item.get('excerpt', ''),
+                date=item.get('date', ''), link=item.get('link', '#'), order=i + 10,
+            )
+            hp_ar.news_items.add(ni)
+        log('✅ NewsItem AR créés')
+
+    ct_ar = data_ar.get('cta', {})
+    hp_ar.cta_title = ct_ar.get('title', '')
+    hp_ar.cta_subtitle = ct_ar.get('subtitle', '')
+    hp_ar.cta_btn_label = ct_ar.get('btnLabel', '')
+    hp_ar.cta_btn_url = ct_ar.get('btnUrl', '')
+    hp_ar.cta_btn_secondary_label = ct_ar.get('btnSecondaryLabel', '')
+    hp_ar.cta_btn_secondary_url = ct_ar.get('btnSecondaryUrl', '')
+
+    hp_ar.save()
+    log('✅ HomePage AR scalar fields sauvegardés')
+
+
 def main():
     log('🌱 Démarrage du seed...')
     seed_superuser()
     seed_site_config()
     seed_home_page()
+    seed_explicit_models()
     log('\n🎉 Seed terminé avec succès !')
     log(f'   Django Admin : http://localhost:8000/django-admin/ ({ADMIN_EMAIL} / {ADMIN_PASSWORD})')
     log('   Custom Admin : http://localhost:3001/admin/')
@@ -667,3 +1006,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
