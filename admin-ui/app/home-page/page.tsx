@@ -12,7 +12,7 @@ export default function HomePageEditor() {
 
   useEffect(() => {
     setLoading(true);
-    fetchWithAuth(`/home-page?locale=${locale}`)
+    fetchWithAuth(`/home-page/?locale=${locale}`)
       .then((res) => res.json())
       .then((res) => {
         setHomeData(res.data || {});
@@ -25,7 +25,7 @@ export default function HomePageEditor() {
     e.preventDefault();
     setSaving(true);
     try {
-      const res = await fetchWithAuth(`/home-page?locale=${locale}`, {
+      const res = await fetchWithAuth(`/home-page/?locale=${locale}`, {
         method: 'PUT',
         body: JSON.stringify(homeData),
       });
@@ -112,6 +112,40 @@ export default function HomePageEditor() {
               </div>
             </div>
 
+            {/* Section Hero */}
+            {homeData.hero && homeData.hero.slides && (
+              <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
+                <h2 className="text-lg font-bold text-amber-400 border-b border-slate-800 pb-2">Section Hero (Bannières)</h2>
+                {homeData.hero.slides.map((slide: any, idx: number) => (
+                  <div key={idx} className="p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase">Slide {idx + 1}</h3>
+                    <input
+                      type="text"
+                      placeholder="Titre"
+                      value={slide.title || ''}
+                      onChange={(e) => {
+                        const newSlides = [...homeData.hero.slides];
+                        newSlides[idx].title = e.target.value;
+                        setHomeData({ ...homeData, hero: { ...homeData.hero, slides: newSlides } });
+                      }}
+                      className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded text-sm text-white"
+                    />
+                    <textarea
+                      placeholder="Description"
+                      rows={2}
+                      value={slide.text || ''}
+                      onChange={(e) => {
+                        const newSlides = [...homeData.hero.slides];
+                        newSlides[idx].text = e.target.value;
+                        setHomeData({ ...homeData, hero: { ...homeData.hero, slides: newSlides } });
+                      }}
+                      className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Section À propos */}
             {homeData.about && (
               <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
@@ -132,6 +166,42 @@ export default function HomePageEditor() {
                       type="text"
                       value={homeData.about.title || ''}
                       onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, title: e.target.value } })}
+                      className="w-full px-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs text-slate-400 font-semibold uppercase mb-1">Texte de présentation</label>
+                  <textarea
+                    rows={3}
+                    value={homeData.about.text || ''}
+                    onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, text: e.target.value } })}
+                    className="w-full px-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Section Services */}
+            {homeData.services && (
+              <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
+                <h2 className="text-lg font-bold text-amber-400 border-b border-slate-800 pb-2">Section Services</h2>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs text-slate-400 font-semibold uppercase mb-1">Titre</label>
+                    <input
+                      type="text"
+                      value={homeData.services.title || ''}
+                      onChange={(e) => setHomeData({ ...homeData, services: { ...homeData.services, title: e.target.value } })}
+                      className="w-full px-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 font-semibold uppercase mb-1">Sous-titre</label>
+                    <input
+                      type="text"
+                      value={homeData.services.subtitle || ''}
+                      onChange={(e) => setHomeData({ ...homeData, services: { ...homeData.services, subtitle: e.target.value } })}
                       className="w-full px-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
                     />
                   </div>
