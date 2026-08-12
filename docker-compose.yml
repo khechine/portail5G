@@ -20,7 +20,7 @@ services:
     environment:
       POSTGRES_DB: portail5g
       POSTGRES_USER: portail5g
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-Topnet2026!}
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
     env_file: ./backend/.env
     environment:
-      DATABASE_URL: postgres://portail5g:${DB_PASSWORD}@db:5432/portail5g
+      DATABASE_URL: postgres://portail5g:${DB_PASSWORD:-Topnet2026!}@db:5432/portail5g
     volumes:
       - django_media:/app/media
       - django_static:/app/staticfiles
