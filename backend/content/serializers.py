@@ -9,15 +9,20 @@ from django.conf import settings
 
 
 def _media_url(request, path):
-    """Build absolute media URL."""
+    """Build relative media path starting with /media/."""
     if not path:
         return ''
-    if path.startswith('http'):
+    if path.startswith('http://') or path.startswith('https://'):
+        # If it contains backend internal host, strip scheme and host
+        if 'backend:' in path or 'localhost:' in path:
+            parts = path.split('/media/')
+            if len(parts) > 1:
+                return f"/media/{parts[-1]}"
         return path
-    url = f"{settings.MEDIA_URL}{path}".replace('//', '/')
-    if request:
-        return request.build_absolute_uri(url)
-    return url
+    clean_path = str(path).lstrip('/')
+    if clean_path.startswith('media/'):
+        return f"/{clean_path}"
+    return f"/media/{clean_path}"
 
 
 class SiteConfigSerializer(serializers.ModelSerializer):
