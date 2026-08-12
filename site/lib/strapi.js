@@ -97,10 +97,14 @@ function mediaUrl(media) {
   let url = typeof media === 'string' ? media : media.url;
   if (!url) return '';
 
-  // Clean any internal docker backend host prefix if present
-  url = url.replace(/^http:\/\/backend:8000/, '').replace(/^http:\/\/localhost:8000/, '');
+  // If url contains /media/, extract relative path starting with /media/
+  if (url.includes('/media/')) {
+    return '/media/' + url.split('/media/').pop();
+  }
 
-  if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) return url;
+  if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) {
+    return url;
+  }
   return `${STRAPI_PUBLIC_URL}${url}`;
 }
 
