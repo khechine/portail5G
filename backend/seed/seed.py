@@ -607,15 +607,17 @@ HOME_PAGE_AR = {
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def seed_superuser():
-    if not User.objects.filter(username=ADMIN_USERNAME).exists():
-        User.objects.create_superuser(
-            username=ADMIN_USERNAME,
-            email=ADMIN_EMAIL,
-            password=ADMIN_PASSWORD,
-        )
-        log(f'👤 Superuser créé : {ADMIN_EMAIL}')
-    else:
-        log('👤 Superuser déjà présent')
+    user, created = User.objects.get_or_create(
+        username=ADMIN_USERNAME,
+        defaults={'email': ADMIN_EMAIL, 'is_staff': True, 'is_superuser': True}
+    )
+    user.set_password(ADMIN_PASSWORD)
+    user.email = ADMIN_EMAIL
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
+    status = 'créé' if created else 'mot de passe réinitialisé'
+    log(f'👤 Superuser {ADMIN_USERNAME} ({ADMIN_EMAIL}) {status}')
 
 
 def seed_site_config():
