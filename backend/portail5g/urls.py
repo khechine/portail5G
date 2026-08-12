@@ -24,6 +24,5 @@ urlpatterns = [
     path('api/', include('leads.urls')),
 ]
 
-# Serve media files in development (Nginx handles this in production)
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Serve media files (Gunicorn fallback when Nginx proxies /media/ to backend)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
