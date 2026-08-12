@@ -74,6 +74,8 @@ services:
       # Remplace STRAPI_URL -- pointe maintenant vers Django
       STRAPI_URL: http://backend:8000
       STRAPI_PUBLIC_URL: ""
+    volumes:
+      - ./site:/app
     networks:
       - internal
     depends_on:
