@@ -44,7 +44,7 @@ async function loadPage(req, res, next) {
     next();
   } catch (err) {
     console.error(`Erreur chargement contenu [${locale}] :`, err.message);
-    res.status(503).send('Contenu indisponible. Vérifiez que Strapi est démarré et que le seed a été exécuté.');
+    res.status(503).send('Contenu indisponible. Vérifiez que le backend Django est démarré et que le seed a été exécuté (python seed/seed.py).');
   }
 }
 
