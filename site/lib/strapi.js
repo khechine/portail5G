@@ -2,7 +2,7 @@
 
 const STRAPI_URL = (process.env.DJANGO_URL || process.env.STRAPI_URL || 'http://127.0.0.1:8000').replace(/\/$/, '');
 const STRAPI_PUBLIC_URL = (process.env.STRAPI_PUBLIC_URL !== undefined ? process.env.STRAPI_PUBLIC_URL : STRAPI_URL).replace(/\/$/, '');
-const CACHE_TTL = Number(process.env.CACHE_TTL_MS || 60000);
+const CACHE_TTL = Number(process.env.CACHE_TTL_MS || 0);
 
 const cache = new Map();
 
@@ -13,11 +13,13 @@ function cacheKey(locale, type) {
 async function cached(locale, type, fetcher) {
   const key = cacheKey(locale, type);
   const hit = cache.get(key);
-  if (hit && Date.now() - hit.ts < CACHE_TTL) {
+  if (CACHE_TTL > 0 && hit && Date.now() - hit.ts < CACHE_TTL) {
     return hit.value;
   }
   const value = await fetcher();
-  cache.set(key, { ts: Date.now(), value });
+  if (CACHE_TTL > 0) {
+    cache.set(key, { ts: Date.now(), value });
+  }
   return value;
 }
 
@@ -94,8 +96,7 @@ function mediaUrl(media) {
   if (!media) return '';
   const url = typeof media === 'string' ? media : media.url;
   if (!url) return '';
-  if (url.startswith && (url.startsWith('http://') || url.startsWith('https://'))) return url;
-  if (url.startsWith && url.startsWith('http')) return url;
+  if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) return url;
   return `${STRAPI_PUBLIC_URL}${url}`;
 }
 
