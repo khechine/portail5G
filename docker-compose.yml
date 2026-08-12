@@ -1,39 +1,63 @@
 # =============================================================================
 #  Docker Compose -- Portail 5G Topnet
 #  Services :
-#    strapi   -> CMS / API         (port interne 1337)
-#    site     -> Frontend Express  (port interne 3000)
-#    nginx    -> Reverse proxy     (ports publics 80 / 443)
+#    db       -> PostgreSQL 16          (port interne 5432)
+#    backend  -> Django DRF / Gunicorn  (port interne 8000)
+#    site     -> Frontend Express/EJS   (port interne 3000)
+#    admin    -> Next.js Admin UI       (port interne 3001)
+#    nginx    -> Reverse proxy          (ports publics 80 / 443)
 # =============================================================================
 
 services:
 
   # ---------------------------------------------------------------------------
-  #  Strapi CMS
+  #  PostgreSQL 16
   # ---------------------------------------------------------------------------
-  strapi:
-    build:
-      context: ./strapi
-      dockerfile: Dockerfile
-    container_name: portail5g_strapi
+  db:
+    image: postgres:16-alpine
+    container_name: portail5g_db
     restart: unless-stopped
-    env_file: ./strapi/.env
     environment:
-      NODE_ENV: production
-      HOST: 0.0.0.0
-      PORT: 1337
+      POSTGRES_DB: portail5g
+      POSTGRES_USER: portail5g
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      # Persistance SQLite + uploads
-      - strapi_data:/app/.tmp
-      - strapi_uploads:/app/public/uploads
+      - pg_data:/var/lib/postgresql/data
     networks:
       - internal
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"require('net').createConnection(1337,'localhost').on('connect',function(){process.exit(0)}).on('error',function(){process.exit(1)})\""]
+      test: ["CMD-SHELL", "pg_isready -U portail5g"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # ---------------------------------------------------------------------------
+  #  Django Backend (DRF + Gunicorn)
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: portail5g_backend
+    restart: unless-stopped
+    env_file: ./backend/.env
+    environment:
+      DATABASE_URL: postgres://portail5g:${DB_PASSWORD}@db:5432/portail5g
+    volumes:
+      - django_media:/app/media
+      - django_static:/app/staticfiles
+    networks:
+      - internal
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/api/home-page/?locale=fr')\""]
       interval: 15s
       timeout: 10s
       retries: 10
-      start_period: 40s
+      start_period: 30s
 
   # ---------------------------------------------------------------------------
   #  Frontend site (Express/EJS) -- FR & AR
@@ -47,12 +71,13 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
-      STRAPI_URL: http://strapi:1337
+      # Remplace STRAPI_URL -- pointe maintenant vers Django
+      STRAPI_URL: http://backend:8000
       STRAPI_PUBLIC_URL: ""
     networks:
       - internal
     depends_on:
-      strapi:
+      backend:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "node -e \"require('net').createConnection(3000,'localhost').on('connect',function(){process.exit(0)}).on('error',function(){process.exit(1)})\""]
@@ -60,6 +85,31 @@ services:
       timeout: 5s
       retries: 10
       start_period: 30s
+
+  # ---------------------------------------------------------------------------
+  #  Admin UI (Next.js)
+  # ---------------------------------------------------------------------------
+  admin:
+    build:
+      context: ./admin-ui
+      dockerfile: Dockerfile
+    container_name: portail5g_admin
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      NEXT_PUBLIC_API_URL: /api
+    networks:
+      - internal
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('net').createConnection(3001,'localhost').on('connect',function(){process.exit(0)}).on('error',function(){process.exit(1)})\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   # ---------------------------------------------------------------------------
   #  Nginx -- reverse proxy + SSL
@@ -72,23 +122,25 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      # Config nginx
       - ./nginx/nginx.conf:/etc/nginx/conf.d/box5g.conf:ro
-      # Certificats SSL (montes depuis ./nginx/certs/ sur le serveur)
       - ./nginx/ssl:/etc/nginx/certs:ro
+      - django_static:/var/www/static:ro
     networks:
       - internal
     depends_on:
-      - strapi
+      - backend
       - site
+      - admin
 
 # -----------------------------------------------------------------------------
 #  Volumes
 # -----------------------------------------------------------------------------
 volumes:
-  strapi_data:
+  pg_data:
     driver: local
-  strapi_uploads:
+  django_media:
+    driver: local
+  django_static:
     driver: local
 
 # -----------------------------------------------------------------------------
