@@ -5,13 +5,14 @@ echo "Waiting for database..."
 python -c "
 import sys, time, psycopg2, os
 db_url = os.environ.get('DATABASE_URL', '')
-# parse simple host/user/pass
-for _ in range(30):
+for i in range(60):
     try:
         conn = psycopg2.connect(db_url)
         conn.close()
+        print('Database connection successful!')
         sys.exit(0)
     except Exception as e:
+        print(f'Waiting for DB... ({e})')
         time.sleep(1)
 sys.exit(1)
 "
