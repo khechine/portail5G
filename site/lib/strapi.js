@@ -91,8 +91,12 @@ const HOME_PAGE_POPULATE = [
 ];
 
 function mediaUrl(media) {
-  if (!media || !media.url) return '';
-  return `${STRAPI_PUBLIC_URL}${media.url}`;
+  if (!media) return '';
+  const url = typeof media === 'string' ? media : media.url;
+  if (!url) return '';
+  if (url.startswith && (url.startsWith('http://') || url.startsWith('https://'))) return url;
+  if (url.startsWith && url.startsWith('http')) return url;
+  return `${STRAPI_PUBLIC_URL}${url}`;
 }
 
 async function getSiteConfig(locale) {
