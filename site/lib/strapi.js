@@ -94,8 +94,12 @@ const HOME_PAGE_POPULATE = [
 
 function mediaUrl(media) {
   if (!media) return '';
-  const url = typeof media === 'string' ? media : media.url;
+  let url = typeof media === 'string' ? media : media.url;
   if (!url) return '';
+
+  // Clean any internal docker backend host prefix if present
+  url = url.replace(/^http:\/\/backend:8000/, '').replace(/^http:\/\/localhost:8000/, '');
+
   if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) return url;
   return `${STRAPI_PUBLIC_URL}${url}`;
 }
