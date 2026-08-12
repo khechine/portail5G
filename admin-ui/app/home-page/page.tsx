@@ -38,7 +38,7 @@ export default function HomePageEditor() {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, callback: (url: string) => void) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, callback: (url: string) => void) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -91,7 +91,7 @@ export default function HomePageEditor() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold">Éditeur de la Page d'accueil</h1>
-            <p className="text-slate-400 text-sm mt-1">Gestion modulaire et granulaire de toutes les sections</p>
+            <p className="text-slate-400 text-sm mt-1">Gestion granulaire de chaque champ (titres, boutons, images, textes)</p>
           </div>
 
           <div className="flex bg-slate-900 border border-slate-800 rounded-lg p-1">
@@ -175,7 +175,7 @@ export default function HomePageEditor() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">Titre surbrillance (Title Highlight)</label>
+                        <label className="block text-xs text-slate-400 mb-1">Titre surbrillance (titleHighlight)</label>
                         <input
                           type="text"
                           value={slide.titleHighlight || ''}
@@ -217,10 +217,39 @@ export default function HomePageEditor() {
                       />
                     </div>
 
+                    {/* Image du Slide */}
+                    <div>
+                      <label className="block text-xs text-slate-400 mb-1">Image du Slide (URL / Upload)</label>
+                      <div className="flex gap-2 items-center">
+                        <input
+                          type="text"
+                          value={slide.image || ''}
+                          onChange={(e) => {
+                            const slides = [...homeData.hero.slides];
+                            slides[idx].image = e.target.value;
+                            setHomeData({ ...homeData, hero: { ...homeData.hero, slides } });
+                          }}
+                          className="flex-1 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded text-sm text-white"
+                        />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleImageUpload(e, (url) => {
+                              const slides = [...homeData.hero.slides];
+                              slides[idx].image = url;
+                              setHomeData({ ...homeData, hero: { ...homeData.hero, slides } });
+                            })
+                          }
+                          className="text-xs text-slate-400"
+                        />
+                      </div>
+                    </div>
+
                     {/* Boutons du slide */}
                     <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-900">
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 1</label>
+                        <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 1 (btnPrimaryLabel)</label>
                         <input
                           type="text"
                           value={slide.btnPrimaryLabel || ''}
@@ -233,7 +262,7 @@ export default function HomePageEditor() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">URL Bouton 1</label>
+                        <label className="block text-xs text-slate-400 mb-1">URL Bouton 1 (btnPrimaryUrl)</label>
                         <input
                           type="text"
                           value={slide.btnPrimaryUrl || ''}
@@ -246,7 +275,7 @@ export default function HomePageEditor() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 2</label>
+                        <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 2 (btnSecondaryLabel)</label>
                         <input
                           type="text"
                           value={slide.btnSecondaryLabel || ''}
@@ -259,7 +288,7 @@ export default function HomePageEditor() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">URL Bouton 2</label>
+                        <label className="block text-xs text-slate-400 mb-1">URL Bouton 2 (btnSecondaryUrl)</label>
                         <input
                           type="text"
                           value={slide.btnSecondaryUrl || ''}
@@ -277,16 +306,95 @@ export default function HomePageEditor() {
               </div>
             )}
 
-            {/* 3. Section Tarifs & Offres (Plans) */}
-            {homeData.plans && (
+            {/* 3. Section À Propos (About) */}
+            {homeData.about && (
               <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
                 <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-                  <h2 className="text-lg font-bold text-amber-400">3. Section Offres & Tarifs (Plans)</h2>
+                  <h2 className="text-lg font-bold text-amber-400">3. Section À Propos (About)</h2>
                   <label className="flex items-center gap-2 text-sm text-slate-300">
                     <input
                       type="checkbox"
-                      checked={homeData.plans.enabled ?? true}
-                      onChange={(e) => setHomeData({ ...homeData, plans: { ...homeData.plans, enabled: e.target.checked } })}
+                      checked={homeData.about.enabled ?? true}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, enabled: e.target.checked } })}
+                      className="rounded accent-amber-500"
+                    />
+                    Section activée
+                  </label>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Tagline / Surtitre</label>
+                    <input
+                      type="text"
+                      value={homeData.about.tagline || ''}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, tagline: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Titre principal</label>
+                    <input
+                      type="text"
+                      value={homeData.about.title || ''}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, title: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Titre surbrillance (titleHighlight)</label>
+                    <input
+                      type="text"
+                      value={homeData.about.titleHighlight || ''}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, titleHighlight: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">Texte de présentation</label>
+                  <textarea
+                    rows={3}
+                    value={homeData.about.text || ''}
+                    onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, text: e.target.value } })}
+                    className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Libellé Bouton (buttonLabel)</label>
+                    <input
+                      type="text"
+                      value={homeData.about.buttonLabel || ''}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, buttonLabel: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">URL Bouton (buttonUrl)</label>
+                    <input
+                      type="text"
+                      value={homeData.about.buttonUrl || ''}
+                      onChange={(e) => setHomeData({ ...homeData, about: { ...homeData.about, buttonUrl: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 4. Section Call To Action (CTA) */}
+            {homeData.cta && (
+              <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
+                <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                  <h2 className="text-lg font-bold text-amber-400">4. Section Call To Action (Bandeau final CTA)</h2>
+                  <label className="flex items-center gap-2 text-sm text-slate-300">
+                    <input
+                      type="checkbox"
+                      checked={homeData.cta.enabled ?? true}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, enabled: e.target.checked } })}
                       className="rounded accent-amber-500"
                     />
                     Section activée
@@ -298,107 +406,60 @@ export default function HomePageEditor() {
                     <label className="block text-xs text-slate-400 mb-1">Titre principal</label>
                     <input
                       type="text"
-                      value={homeData.plans.title || ''}
-                      onChange={(e) => setHomeData({ ...homeData, plans: { ...homeData.plans, title: e.target.value } })}
+                      value={homeData.cta.title || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, title: e.target.value } })}
                       className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1">Titre surbrillance</label>
+                    <label className="block text-xs text-slate-400 mb-1">Sous-titre</label>
                     <input
                       type="text"
-                      value={homeData.plans.titleHighlight || ''}
-                      onChange={(e) => setHomeData({ ...homeData, plans: { ...homeData.plans, titleHighlight: e.target.value } })}
+                      value={homeData.cta.subtitle || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, subtitle: e.target.value } })}
                       className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
                     />
                   </div>
                 </div>
 
-                {/* Groupes d'onglets (30M, 50M, 100M) */}
-                {homeData.plans.groups?.map((group: any, gIdx: number) => (
-                  <div key={gIdx} className="p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3">
-                    <h3 className="text-xs font-bold text-amber-500 uppercase">Onglet / Débit : {group.name}</h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                      {group.cards?.map((card: any, cIdx: number) => (
-                        <div key={cIdx} className="p-3 bg-slate-900 rounded border border-slate-800 space-y-2">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase">Carte {cIdx + 1}</span>
-                          <input
-                            type="text"
-                            placeholder="Nom du forfait"
-                            value={card.title || ''}
-                            onChange={(e) => {
-                              const groups = [...homeData.plans.groups];
-                              groups[gIdx].cards[cIdx].title = e.target.value;
-                              setHomeData({ ...homeData, plans: { ...homeData.plans, groups } });
-                            }}
-                            className="w-full px-2 py-1 bg-slate-950 border border-slate-800 rounded text-xs text-white"
-                          />
-                          <div className="flex gap-2">
-                            <input
-                              type="text"
-                              placeholder="Prix"
-                              value={card.price || ''}
-                              onChange={(e) => {
-                                const groups = [...homeData.plans.groups];
-                                groups[gIdx].cards[cIdx].price = e.target.value;
-                                setHomeData({ ...homeData, plans: { ...homeData.plans, groups } });
-                              }}
-                              className="w-1/2 px-2 py-1 bg-slate-950 border border-slate-800 rounded text-xs text-white"
-                            />
-                            <input
-                              type="text"
-                              placeholder="Badge (ex: Populaire)"
-                              value={card.badge || ''}
-                              onChange={(e) => {
-                                const groups = [...homeData.plans.groups];
-                                groups[gIdx].cards[cIdx].badge = e.target.value;
-                                setHomeData({ ...homeData, plans: { ...homeData.plans, groups } });
-                              }}
-                              className="w-1/2 px-2 py-1 bg-slate-950 border border-slate-800 rounded text-xs text-white"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* 4. Section FAQ */}
-            {homeData.faq && (
-              <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-4">
-                <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-                  <h2 className="text-lg font-bold text-amber-400">4. Section FAQ (Questions fréquentes)</h2>
-                </div>
-
-                {homeData.faq.items?.map((item: any, idx: number) => (
-                  <div key={idx} className="p-3 bg-slate-950 rounded border border-slate-800 space-y-2">
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 1 (btnLabel)</label>
                     <input
                       type="text"
-                      placeholder="Question"
-                      value={item.question || ''}
-                      onChange={(e) => {
-                        const items = [...homeData.faq.items];
-                        items[idx].question = e.target.value;
-                        setHomeData({ ...homeData, faq: { ...homeData.faq, items } });
-                      }}
-                      className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded text-sm text-white font-semibold"
-                    />
-                    <textarea
-                      placeholder="Réponse"
-                      rows={2}
-                      value={item.answer || ''}
-                      onChange={(e) => {
-                        const items = [...homeData.faq.items];
-                        items[idx].answer = e.target.value;
-                        setHomeData({ ...homeData, faq: { ...homeData.faq, items } });
-                      }}
-                      className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded text-sm text-white"
+                      value={homeData.cta.btnLabel || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, btnLabel: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
                     />
                   </div>
-                ))}
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">URL Bouton 1 (btnUrl)</label>
+                    <input
+                      type="text"
+                      value={homeData.cta.btnUrl || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, btnUrl: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">Libellé Bouton 2 (btnSecondaryLabel)</label>
+                    <input
+                      type="text"
+                      value={homeData.cta.btnSecondaryLabel || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, btnSecondaryLabel: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1">URL Bouton 2 (btnSecondaryUrl)</label>
+                    <input
+                      type="text"
+                      value={homeData.cta.btnSecondaryUrl || ''}
+                      onChange={(e) => setHomeData({ ...homeData, cta: { ...homeData.cta, btnSecondaryUrl: e.target.value } })}
+                      className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-sm text-white"
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
