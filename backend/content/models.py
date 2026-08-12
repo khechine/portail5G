@@ -302,13 +302,14 @@ class SiteConfig(models.Model):
     favicon = models.FileField(upload_to='config/', blank=True, null=True, verbose_name="Favicon")
 
     # Couleurs
-    primary_color = models.CharField(max_length=20, default='#FFA502', verbose_name="Couleur principale")
-    primary_dark = models.CharField(max_length=20, default='#e08e00', verbose_name="Couleur sombre principale")
-    heading_color = models.CharField(max_length=20, default='#251444', verbose_name="Couleur des titres")
-    text_color = models.CharField(max_length=20, default='#737177', verbose_name="Couleur du texte")
-    light_bg = models.CharField(max_length=20, default='#F7F5F1', verbose_name="Fond clair")
+    primary_color = models.CharField(max_length=20, default='#FFA502', verbose_name="Couleur principale (boutons, accents)")
+    primary_dark = models.CharField(max_length=20, default='#e08e00', verbose_name="Couleur principale sombre (hover)")
+    em_color = models.CharField(max_length=20, default='#FFA502', verbose_name="Couleur des <em> dans les titres (h2 em, .section__title em)")
+    heading_color = models.CharField(max_length=20, default='#251444', verbose_name="Couleur des titres (h1, h2, h3…)")
+    text_color = models.CharField(max_length=20, default='#737177', verbose_name="Couleur du texte courant")
+    light_bg = models.CharField(max_length=20, default='#F7F5F1', verbose_name="Fond clair (sections alternées)")
     border_color = models.CharField(max_length=20, default='#E6E2D9', verbose_name="Couleur des bordures")
-    dark_bg = models.CharField(max_length=20, default='#251444', verbose_name="Fond sombre")
+    dark_bg = models.CharField(max_length=20, default='#251444', verbose_name="Fond sombre (header, footer, topbar)")
 
     # Typographie
     body_font = models.CharField(max_length=100, default='Outfit', verbose_name="Police du corps")

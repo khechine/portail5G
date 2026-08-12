@@ -40,7 +40,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 section{position:relative}
 .container{max-width:var(--container);margin:0 auto;padding:0 22px}
 
-h2 em, .section__title em, .hero__title em{font-style:normal;color:var(--c-primary)}
+h2 em, .section__title em, .hero__title em{font-style:normal;color:var(--c-em, var(--c-primary))}
 
 /* ---------- boutons ---------- */
 .btn{
