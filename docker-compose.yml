@@ -123,6 +123,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/box5g.conf:ro
       - ./nginx/ssl:/etc/nginx/certs:ro
       - django_static:/var/www/static:ro
+      - django_media:/var/www/media:ro
     networks:
       - internal
     depends_on:
