@@ -214,14 +214,14 @@ const siteConfigFR = (img) => ({
 });
 
 const siteConfigAR = (img) => ({
-  siteName: 'توبنيت بوكس 5G',
+  siteName: 'توبنات بوكس 5G',
   logo: img('topnet.png'),
   favicon: img('favicon.svg'),
   primaryColor: '#FFA502',
   primaryDark: '#e08e00',
   phone: '1120',
   email: 'commercial@topnet.tn',
-  address: 'مقر توبنيت، المركز الحضري الشمالي، تونس',
+  address: 'مقر توبنات، المركز الحضري الشمالي، تونس',
   topbarLeft: 'خدمة العملاء 7/7 — 1120',
   navItems: [
     { label: 'الرئيسية', url: '#accueil' },
@@ -248,7 +248,7 @@ const siteConfigAR = (img) => ({
         { label: 'بوكس 5G', url: '#offres' },
         { label: 'أدسل المنزلي', url: '#' },
         { label: 'سمارت فايبر', url: '#' },
-        { label: 'توبنيت موبايل', url: '#' },
+        { label: 'توبنات موبايل', url: '#' },
         { label: 'الشركات', url: '#' },
       ],
     },
@@ -263,7 +263,7 @@ const siteConfigAR = (img) => ({
       ],
     },
     {
-      title: 'توبنيت',
+      title: 'توبنات',
       links: [
         { label: 'من نحن', url: '#' },
         { label: 'الأخبار', url: '#' },
@@ -273,7 +273,7 @@ const siteConfigAR = (img) => ({
       ],
     },
   ],
-  copyright: '© 2026 توبنيت S.A. — جميع الحقوق محفوظة.',
+  copyright: '© 2026 توبنات S.A. — جميع الحقوق محفوظة.',
   legalLinks: [
     { label: 'الخصوصية', url: '#' },
     { label: 'الشروط العامة', url: '#' },
@@ -717,18 +717,18 @@ const planCardAR = (speed, unit, price, title, badge, recommended, perks, image,
 });
 
 const homePageAR = (img) => ({
-  metaTitle: 'توبنيت بوكس 5G — إنترنت فائق السرعة بدون أسلاك',
+  metaTitle: 'توبنات بوكس 5G — إنترنت فائق السرعة بدون أسلاك',
   metaDescription:
-    'اطلب بوكس 5G من توبنيت : تركيب في دقيقة واحدة، Wi-Fi 6، سرعات تصل إلى 100 ميجابت/ثانية. شبكة هجينة 5G + 4G. توصيل في كامل تونس.',
+    'اطلب بوكس 5G من توبنات : تركيب في دقيقة واحدة، Wi-Fi 6، سرعات تصل إلى 100 ميجابت/ثانية. شبكة هجينة 5G + 4G. توصيل في كامل تونس.',
   hero: {
     enabled: true,
     slides: [
       {
         image: img('hero-1.jpg'),
         badge: 'جديد — متوفر الآن',
-        title: 'بوكس 5G توبنيت\nأوصله. شغّله.',
+        title: 'بوكس 5G توبنات\nأوصله. شغّله.',
         titleHighlight: 'استمتع.',
-        text: 'بوكس 5G من توبنيت : بدون فنّي، بدون كابل. أوصله واتصل واستمتع بسرعة فائقة تصل إلى 100 ميجابت/ثانية منذ الدقيقة الأولى.',
+        text: 'بوكس 5G من توبنات : بدون فنّي، بدون كابل. أوصله واتصل واستمتع بسرعة فائقة تصل إلى 100 ميجابت/ثانية منذ الدقيقة الأولى.',
         btnPrimaryLabel: 'اطلب الآن',
         btnPrimaryUrl: '#commander',
         btnSecondaryLabel: 'شاهد الأسعار',
@@ -773,7 +773,7 @@ const homePageAR = (img) => ({
     tagline: 'عن بوكس 5G',
     title: 'إنترنت فائق السرعة',
     titleHighlight: 'بدون ألياف وبدون فنّي.',
-    text: 'بوكس 5G من توبنيت يحوّل الشبكة المتنقلة إلى إنترنت منزلي. أدخل شريحة SIM، اربط أجهزتك عبر Wi-Fi 6 واستمتع بسرعة تحميل تصل إلى 100 ميجابت/ثانية مع تحويل تلقائي بين 4G و5G.',
+    text: 'بوكس 5G من توبنات يحوّل الشبكة المتنقلة إلى إنترنت منزلي. أدخل شريحة SIM، اربط أجهزتك عبر Wi-Fi 6 واستمتع بسرعة تحميل تصل إلى 100 ميجابت/ثانية مع تحويل تلقائي بين 4G و5G.',
     image: img('about.jpg'),
     features: [
       { text: 'مودم 5G فائق السرعة' },
@@ -932,7 +932,7 @@ const homePageAR = (img) => ({
       },
     ],
     helpTitle: 'تحتاج مساعدة؟',
-    helpText: 'اتصل على 71 001 298 — متاح 7/7، أو زر أقرب مركز توبنيت.',
+    helpText: 'اتصل على 71 001 298 — متاح 7/7، أو زر أقرب مركز توبنات.',
   },
   faq: {
     enabled: true,
@@ -1009,14 +1009,14 @@ const homePageAR = (img) => ({
     items: [
       {
         image: img('news-1.jpg'),
-        title: 'توبنيت توسّع شبكة 5G إلى 8 ولايات جديدة',
+        title: 'توبنات توسّع شبكة 5G إلى 8 ولايات جديدة',
         excerpt: 'تواصل تغطية 5G توسعها عبر البلاد. تحقق من التغطية في منطقتك.',
         date: '12 جانفي 2026',
         link: '#',
       },
       {
         image: img('news-2.jpg'),
-        title: 'بوكس 5G توبنيت يفوز بجائزة أفضل جهاز ثابت لاسلكي 2026',
+        title: 'بوكس 5G توبنات يفوز بجائزة أفضل جهاز ثابت لاسلكي 2026',
         excerpt: 'تقديراً لاستقلاليته وسرعة تركيبه وتقنية Wi-Fi 6.',
         date: '28 فيفري 2026',
         link: '#',
@@ -1033,7 +1033,7 @@ const homePageAR = (img) => ({
   cta: {
     enabled: true,
     title: 'مستعد للانتقال إلى 5G؟',
-    subtitle: 'اطلب عبر الإنترنت الآن أو توجه إلى أقرب مركز توبنيت.',
+    subtitle: 'اطلب عبر الإنترنت الآن أو توجه إلى أقرب مركز توبنات.',
     background: img('cta-bg.jpg'),
     btnLabel: 'اطلب الآن',
     btnUrl: '#commander',
@@ -1045,7 +1045,7 @@ const homePageAR = (img) => ({
     tagline: 'اطلب عبر الإنترنت',
     title: 'استلم',
     titleHighlight: 'بوكس 5G في منزلك',
-    subtitle: 'املأ الاستمارة وسيتصل بك مستشار توبنيت خلال 24 ساعة.',
+    subtitle: 'املأ الاستمارة وسيتصل بك مستشار توبنات خلال 24 ساعة.',
     labelFirstname: 'الاسم *',
     placeholderFirstname: 'مثال : محمد',
     labelLastname: 'اللقب *',
@@ -1056,14 +1056,14 @@ const homePageAR = (img) => ({
     placeholderGovernorate: 'اختر',
     labelAddress: 'العنوان الكامل *',
     placeholderAddress: 'الشارع، البناية، المدينة…',
-    labelExisting: 'هل أنت مشترك توبنيت بالفعل؟ *',
+    labelExisting: 'هل أنت مشترك توبنات بالفعل؟ *',
     optionYes: 'نعم، أنا مشترك',
     optionNo: 'لا، أنا جديد',
     labelPlan: 'اختر عرضك *',
     submitLabel: 'اطلب',
     disclaimer: 'بياناتك سرية وتُستخدم فقط في إطار طلب اشتراكك.',
     msgRequired: 'يرجى ملء جميع الحقول الإلزامية.',
-    msgSuccess: 'تم إرسال طلبك! سيتصل بك مستشار توبنيت خلال 24 ساعة.',
+    msgSuccess: 'تم إرسال طلبك! سيتصل بك مستشار توبنات خلال 24 ساعة.',
     msgError: 'حدث خطأ، يرجى إعادة المحاولة.',
     governorates: GOVERNORATES_AR.map((text) => ({ text })),
   },
@@ -1072,7 +1072,7 @@ const homePageAR = (img) => ({
     tagline: 'النشرة البريدية',
     title: 'ابقَ',
     titleHighlight: 'متابعاً',
-    subtitle: 'استلم آخر العروض وأخبار 5G من توبنيت.',
+    subtitle: 'استلم آخر العروض وأخبار 5G من توبنات.',
     placeholder: 'بريدك الإلكتروني',
     buttonLabel: 'اشترك',
     msgEmail: 'يرجى إدخال بريد إلكتروني صحيح.',
