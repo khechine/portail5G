@@ -152,8 +152,8 @@ const siteConfigFR = (img) => ({
   primaryColor: '#FFA502',
   primaryDark: '#e08e00',
   phone: '1120',
-  email: 'contact@topnet.tn',
-  address: 'Boulevard de la Terre, Centre Urbain Nord, Tunis',
+  email: 'commercial@topnet.tn',
+  address: 'Siège Topnet, Centre Urbain Nord, Tunis',
   topbarLeft: 'Service client 7j/7 — Hotline 1120',
   navItems: [
     { label: 'Accueil', url: '#accueil' },
@@ -220,8 +220,8 @@ const siteConfigAR = (img) => ({
   primaryColor: '#FFA502',
   primaryDark: '#e08e00',
   phone: '1120',
-  email: 'contact@topnet.tn',
-  address: 'شارع الأرض، المركز الحضري الشمالي، تونس',
+  email: 'commercial@topnet.tn',
+  address: 'مقر توبنيت، المركز الحضري الشمالي، تونس',
   topbarLeft: 'خدمة العملاء 7/7 — 1120',
   navItems: [
     { label: 'الرئيسية', url: '#accueil' },
