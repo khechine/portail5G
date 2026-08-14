@@ -313,15 +313,15 @@ export default function SiteConfigPage() {
               <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: 12, padding: 16, marginBottom: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                   <span>✨</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24' }}>Couleur des mots en surbrillance (<em>) dans les titres</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24' }}>Couleur des mots en surbrillance (&lt;em&gt;) dans les titres</span>
                 </div>
                 <p style={{ fontSize: 12, color: '#94a3b8', marginBottom: 12 }}>
-                  Appliquée aux éléments en em (ex: <em>Profitez.</em>, <em>sans fibre</em>) :{' '}
+                  Appliquée aux éléments en &lt;em&gt; (ex: &lt;em&gt;Profitez.&lt;/em&gt;, &lt;em&gt;sans fibre&lt;/em&gt;) :{' '}
                   <code style={{ background: '#0f172a', padding: '2px 6px', borderRadius: 4, fontFamily: 'monospace', color: '#f59e0b' }}>
                     h2 em, .section__title em, .hero__title em
                   </code>
                 </p>
-                <ColorField label="Couleur <em> dans les titres" value={cfg.em_color} onChange={v => set('em_color', v)} />
+                <ColorField label="Couleur &lt;em&gt; dans les titres" value={cfg.em_color} onChange={v => set('em_color', v)} />
               </div>
 
               <Grid>
