@@ -762,6 +762,13 @@ def seed_explicit_models():
     hp_fr.specs_tagline = sp.get('tagline', '')
     hp_fr.specs_title = sp.get('title', '')
     hp_fr.specs_title_highlight = sp.get('titleHighlight', '')
+    # Upload spec image Huawei H153-381
+    _spec_img = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'huawei_h153_381.jpeg')
+    if not hp_fr.specs_image and os.path.exists(_spec_img):
+        from django.core.files import File
+        with open(_spec_img, 'rb') as _f:
+            hp_fr.specs_image.save('specs/huawei_h153_381.jpeg', File(_f), save=False)
+        log('✅ Specs image FR uploadée')
     if not hp_fr.specs_rows.exists():
         for i, row in enumerate(sp.get('rows', [])):
             sr = SpecRow.objects.create(
@@ -924,6 +931,12 @@ def seed_explicit_models():
     hp_ar.specs_tagline = sp_ar.get('tagline', '')
     hp_ar.specs_title = sp_ar.get('title', '')
     hp_ar.specs_title_highlight = sp_ar.get('titleHighlight', '')
+    # Upload spec image Huawei H153-381 (même image que FR)
+    if not hp_ar.specs_image and os.path.exists(_spec_img):
+        from django.core.files import File
+        with open(_spec_img, 'rb') as _f:
+            hp_ar.specs_image.save('specs/huawei_h153_381.jpeg', File(_f), save=False)
+        log('✅ Specs image AR uploadée')
     if not hp_ar.specs_rows.exists():
         for i, row in enumerate(sp_ar.get('rows', [])):
             sr = SpecRow.objects.create(
