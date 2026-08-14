@@ -151,10 +151,10 @@ const siteConfigFR = (img) => ({
   favicon: img('favicon.svg'),
   primaryColor: '#FFA502',
   primaryDark: '#e08e00',
-  phone: '71 001 298',
+  phone: '1120',
   email: 'contact@topnet.tn',
   address: 'Boulevard de la Terre, Centre Urbain Nord, Tunis',
-  topbarLeft: 'Service client 7j/7 — 71 001 298',
+  topbarLeft: 'Service client 7j/7 — Hotline 1120',
   navItems: [
     { label: 'Accueil', url: '#accueil' },
     { label: 'À propos', url: '#apropos' },
@@ -191,7 +191,7 @@ const siteConfigFR = (img) => ({
         { label: "Vérifier l'éligibilité", url: '#' },
         { label: 'Espace client', url: '#' },
         { label: 'Trouver une agence', url: '#' },
-        { label: '71 001 298', url: 'tel:71001298' },
+        { label: '1120', url: 'tel:1120' },
       ],
     },
     {
@@ -219,10 +219,10 @@ const siteConfigAR = (img) => ({
   favicon: img('favicon.svg'),
   primaryColor: '#FFA502',
   primaryDark: '#e08e00',
-  phone: '71 001 298',
+  phone: '1120',
   email: 'contact@topnet.tn',
   address: 'شارع الأرض، المركز الحضري الشمالي، تونس',
-  topbarLeft: 'خدمة العملاء 7/7 — 71 001 298',
+  topbarLeft: 'خدمة العملاء 7/7 — 1120',
   navItems: [
     { label: 'الرئيسية', url: '#accueil' },
     { label: 'من نحن', url: '#apropos' },
@@ -259,7 +259,7 @@ const siteConfigAR = (img) => ({
         { label: 'تحقق من التغطية', url: '#' },
         { label: 'فضاء العميل', url: '#' },
         { label: 'ابحث عن وكالة', url: '#' },
-        { label: '71 001 298', url: 'tel:71001298' },
+        { label: '1120', url: 'tel:1120' },
       ],
     },
     {
@@ -267,7 +267,7 @@ const siteConfigAR = (img) => ({
       links: [
         { label: 'من نحن', url: '#' },
         { label: 'الأخبار', url: '#' },
-        { label: 'التوظيف', url: '#' },
+        { label: 'التوظيف', 'url': '#' },
         { label: 'الشركاء', url: '#' },
         { label: 'البنود القانونية', url: '#' },
       ],
@@ -310,18 +310,18 @@ const planCard = (speed, unit, price, title, badge, recommended, perks, image, p
 });
 
 const homePageFR = (img) => ({
-  metaTitle: 'TOPNET Box 5G — Internet ultra-rapide sans fil',
+  metaTitle: 'TOPNET Box 5G — Internet Ultra-rapide sans fil',
   metaDescription:
-    "Commandez la Box 5G TOPNET : installation en 1 minute, Wi-Fi 6, débits jusqu'à 100 Mbps. Réseau hybride 5G + 4G. Livraison partout en Tunisie.",
+    "Commandez la Box 5G TOPNET Huawei H153-381 : installation Plug & Play, Wi-Fi 6, débits jusqu'à 100 Mbps. Réseau hybride 5G + 4G. Livraison partout en Tunisie.",
   hero: {
     enabled: true,
     slides: [
       {
         image: img('hero-1.jpg'),
         badge: 'Nouveau — Disponible maintenant',
-        title: 'BOX 5G TOPNET\nPlug. Play.',
+        title: 'BOX 5G TOPNET\nPlug & Play.',
         titleHighlight: 'Profitez.',
-        text: "La TOPNET Box 5G : aucun technicien, aucun câble. Branchez, connectez-vous et profitez d'un débit ultrarapide jusqu'à 100 Mbps — dès la première minute.",
+        text: "La TOPNET Box 5G Huawei H153-381 : aucun technicien, aucun câble. Branchez, connectez-vous et profitez d'un débit ultrarapide jusqu'à 100 Mbps — dès la première minute.",
         btnPrimaryLabel: 'Commandez maintenant',
         btnPrimaryUrl: '#commander',
         btnSecondaryLabel: 'Voir les tarifs',
@@ -343,7 +343,7 @@ const homePageFR = (img) => ({
         badge: 'Wi-Fi 6 bi-bande',
         title: 'Jusqu’à 1.2 Gbps\nen Wi-Fi 6',
         titleHighlight: 'Rapide & fluide.',
-        text: 'La Box D-Link DWR-2000M offre un Wi-Fi 6 bi-bande pour streamer, jouer et télétravailler en toute fluidité.',
+        text: 'La Box Huawei H153-381 offre un Wi-Fi 6 bi-bande pour streamer, jouer et télétravailler en toute fluidité.',
         btnPrimaryLabel: 'Commandez maintenant',
         btnPrimaryUrl: '#commander',
         btnSecondaryLabel: 'Fiche technique',
@@ -357,22 +357,22 @@ const homePageFR = (img) => ({
       { value: '5G + 4G', label: 'Réseau hybride' },
       { value: 'Wi-Fi 6', label: 'Bi-bande' },
       { value: '1 min', label: 'Installation' },
-      { value: 'Box offerte', label: "Durée d'abonnement" },
-      { value: '24/7', label: 'Support client' },
+      { value: 'Box mise à disposition', label: 'Équipement inclus' },
+      { value: '24/7', label: 'Support client 1120' },
     ],
   },
   about: {
     enabled: true,
     tagline: 'À propos de la Box 5G',
-    title: 'Internet ultra-rapide',
+    title: 'Internet Ultra-rapide sans fil',
     titleHighlight: 'sans fibre, sans technicien.',
-    text: 'La TOPNET Box 5G transforme le réseau mobile en internet domestique. Branchez la micro-SIM, connectez vos appareils en Wi-Fi 6 et profitez d’un débit descendant jusqu’à 100 Mbps, avec basculement automatique 4G/5G.',
+    text: 'La TOPNET Box 5G Huawei H153-381 transforme le réseau mobile en internet domestique. Branchez la SIM TOPNET 5G, connectez vos appareils en Wi-Fi 6 et profitez d’un débit descendant jusqu’à 100 Mbps, avec basculement automatique 4G/5G.',
     image: img('about.jpg'),
     features: [
-      { text: 'Super-fast dongle 5G' },
+      { text: 'Installation Plug & Play' },
       { text: 'Wi-Fi 6 haute vitesse' },
-      { text: 'SIM prépayée incluse' },
-      { text: 'Mises à jour 5G incluses' },
+      { text: 'Carte SIM TOPNET 5G (2 DT TTC)' },
+      { text: 'Répéteur offert dès 50M' },
     ],
     buttonLabel: 'Plus sur la Box',
     buttonUrl: '#specs',
@@ -390,8 +390,8 @@ const homePageFR = (img) => ({
         description: "Le remplaçant idéal de l'ADSL pour toute la famille.",
         features: [
           { text: 'Usage quotidien' },
-          { text: 'EasyMesh inclus' },
-          { text: 'Box offerte' },
+          { text: 'Répéteur offert dès 50M' },
+          { text: 'Box mise à disposition' },
         ],
       },
       {
@@ -421,88 +421,97 @@ const homePageFR = (img) => ({
     tagline: 'Nos tarifs',
     title: 'Choisissez votre',
     titleHighlight: 'offre 5G',
-    subtitle: 'Box offerte, installation gratuite et engagement de 24 mois.',
+    subtitle: 'Box mise à disposition, installation gratuite et engagement 12, 24 ou 36 mois.',
     groups: [
       {
         name: '30M',
         cards: [
-          planCard('30', 'M', '55.9', 'Usage quotidien', '', false, [
-            'Wi-Fi 6 bi-bande',
-            'Box D-Link offerte',
-            'Usage quotidien',
-          ], img('plan-1.jpg')),
-          planCard('30', 'M', '65.9', 'Famille connectée', '⭐ Populaire', true, [
-            'Wi-Fi 6 bi-bande',
-            'EasyMesh inclus',
-            'Support prioritaire',
+          planCard('30', 'M', '64.9', 'Engagement 12 mois', '', false, [
+            'Upload 10 Mbps',
+            'Avance : 389.4 DT (6 mois)',
+            'Storage & VOD inclus',
+            'Contrôle parental inclus',
           ], img('plan-1.jpg'), '/ mois · 12 mois'),
-          planCard('30', 'M', '75.9', 'Sans engagement', '', false, [
-            'Wi-Fi 6 bi-bande',
-            'Box offerte',
-            'Résiliable à tout moment',
-          ], img('plan-1.jpg'), '/ mois · Sans engagement'),
+          planCard('30', 'M', '59.9', 'Engagement 24 mois', '⭐ Populaire', true, [
+            'Upload 10 Mbps',
+            'Avance : 119.8 DT (2 mois)',
+            '+ 2 DT Timbre Fiscal (2 mois)',
+            '+ 2 DT TTC Carte SIM',
+          ], img('plan-1.jpg'), '/ mois · 24 mois'),
+          planCard('30', 'M', '55.0', 'Engagement 36 mois', '', false, [
+            'Upload 10 Mbps',
+            'Avance : 110.0 DT (2 mois)',
+            '+ 2 DT Timbre Fiscal (2 mois)',
+            '+ 2 DT TTC Carte SIM',
+          ], img('plan-1.jpg'), '/ mois · 36 mois'),
         ],
       },
       {
         name: '50M',
         cards: [
-          planCard('50', 'M', '69.9', 'Famille connectée', '⭐ Recommandé', true, [
-            'Wi-Fi 6 bi-bande',
-            'EasyMesh inclus',
-            'Famille connectée',
-          ], img('plan-2.jpg')),
-          planCard('50', 'M', '79.9', 'Télétravail', '', false, [
-            'Wi-Fi 6 bi-bande',
-            'EasyMesh inclus',
-            'Support prioritaire',
+          planCard('50', 'M', '71.9', 'Engagement 12 mois', '', false, [
+            'Upload 16 Mbps',
+            'Avance : 431.4 DT (6 mois)',
+            'Répéteur Wifi gratuit',
+            'Storage & VOD inclus',
           ], img('plan-2.jpg'), '/ mois · 12 mois'),
-          planCard('50', 'M', '89.9', 'Sans engagement', '', false, [
-            'Wi-Fi 6 bi-bande',
-            'Box offerte',
-            'Résiliable à tout moment',
-          ], img('plan-2.jpg'), '/ mois · Sans engagement'),
+          planCard('50', 'M', '69.9', 'Engagement 24 mois', '⭐ Recommandé', true, [
+            'Upload 16 Mbps',
+            'Avance : 139.8 DT (2 mois)',
+            'Répéteur Wifi gratuit',
+            '+ 2 DT Timbre Fiscal + SIM',
+          ], img('plan-2.jpg'), '/ mois · 24 mois'),
+          planCard('50', 'M', '64.9', 'Engagement 36 mois', '', false, [
+            'Upload 16 Mbps',
+            'Avance : 129.8 DT (2 mois)',
+            'Répéteur Wifi gratuit',
+            '+ 2 DT Timbre Fiscal + SIM',
+          ], img('plan-2.jpg'), '/ mois · 36 mois'),
         ],
       },
       {
         name: '100M',
         cards: [
-          planCard('100', 'M', '110.9', 'Power User', '', false, [
-            'Wi-Fi 6 bi-bande',
-            '4K, gaming & télétravail',
-            'EasyMesh inclus',
-          ], img('plan-3.jpg')),
-          planCard('100', 'M', '120.9', 'Ultra', '⭐ Premium', true, [
-            'Wi-Fi 6 bi-bande',
-            'Débit maximum',
-            'Support VIP',
+          planCard('100', 'M', '119.9', 'Engagement 12 mois', '', false, [
+            'Upload 20 Mbps',
+            'Avance : 719.4 DT (6 mois)',
+            'Répéteur Wifi gratuit',
+            'Storage & VOD inclus',
           ], img('plan-3.jpg'), '/ mois · 12 mois'),
-          planCard('100', 'M', '135.9', 'Sans engagement', '', false, [
-            'Wi-Fi 6 bi-bande',
-            '4K, gaming & télétravail',
-            'Résiliable à tout moment',
-          ], img('plan-3.jpg'), '/ mois · Sans engagement'),
+          planCard('100', 'M', '110.9', 'Engagement 24 mois', '⭐ Premium', true, [
+            'Upload 20 Mbps',
+            'Avance : 221.8 DT (2 mois)',
+            'Répéteur Wifi gratuit',
+            '+ 2 DT Timbre Fiscal + SIM',
+          ], img('plan-3.jpg'), '/ mois · 24 mois'),
+          planCard('100', 'M', '99.9', 'Engagement 36 mois', '', false, [
+            'Upload 20 Mbps',
+            'Avance : 199.8 DT (2 mois)',
+            'Répéteur Wifi gratuit',
+            '+ 2 DT Timbre Fiscal + SIM',
+          ], img('plan-3.jpg'), '/ mois · 36 mois'),
         ],
       },
     ],
-    note: 'Offres valables dans la limite des stocks et de la couverture. Frais de mise en service offerts.',
+    note: 'Offres valables sous réserve de couverture 5G. Carte SIM TOPNET 5G : 2 DT TTC. Timbre fiscal : 2 DT (pour 2 mois).',
   },
   specs: {
     enabled: true,
     tagline: 'Fiche technique',
-    title: 'D-Link',
-    titleHighlight: 'DWR-2000M',
+    title: 'Huawei',
+    titleHighlight: 'H153-381',
     image: img('box-5g.jpg'),
     rows: [
-      { label: 'Réseau', value: '5G / 4G / LTE', highlight: true },
-      { label: 'Standard Wi-Fi', value: 'Wi-Fi 6 (802.11ax)', highlight: false },
-      { label: 'Débit 5 GHz', value: 'Jusqu’à 1.2 Gbps', highlight: true },
-      { label: 'Débit 2.4 GHz', value: '574 Mbps', highlight: false },
-      { label: 'Utilisateurs simultanés', value: '512 (MU-MIMO)', highlight: false },
-      { label: 'Ports', value: '1× LAN + 1× WAN/LAN Gigabit', highlight: false },
-      { label: 'Sécurité', value: 'WPA3, 128 bits', highlight: false },
-      { label: 'RAM', value: '1 Go', highlight: false },
-      { label: 'Protocole mesh', value: 'EasyMesh', highlight: false },
-      { label: 'IPv6', value: 'Supporté', highlight: false },
+      { label: 'Technologie', value: '5G / 4G', highlight: true },
+      { label: 'Modèle', value: 'Huawei H153-381', highlight: true },
+      { label: 'Type', value: 'Routeur 5G fixe', highlight: false },
+      { label: 'Connexion Internet', value: 'Via réseau mobile 5G/4G', highlight: false },
+      { label: 'Installation', value: 'Plug & Play', highlight: true },
+      { label: 'Wi-Fi', value: 'Wi-Fi intégré', highlight: false },
+      { label: 'Ports Ethernet', value: 'Ports LAN pour connecter vos équipements filaires', highlight: false },
+      { label: 'Carte SIM', value: 'SIM TOPNET 5G', highlight: false },
+      { label: 'Alimentation', value: 'Adaptateur secteur fourni', highlight: false },
+      { label: 'Utilisation', value: 'Connexion Internet à domicile ou au bureau', highlight: false },
     ],
   },
   steps: {
@@ -512,20 +521,20 @@ const homePageFR = (img) => ({
     titleHighlight: '3 étapes',
     steps: [
       {
-        title: 'Insérez la micro-SIM',
-        description: 'Placez la carte SIM fournie dans le logement dédié au dos de la Box.',
+        title: 'Insérez la SIM TOPNET 5G',
+        description: 'Placez la carte SIM 5G fournie dans le logement dédié de la Box Huawei H153-381.',
       },
       {
         title: "Branchez l'alimentation",
-        description: "Reliez l'adaptateur à une prise murale. Initialisation en ~45 secondes.",
+        description: "Reliez l'adaptateur secteur fourni à une prise murale. Initialisation rapide Plug & Play.",
       },
       {
         title: 'Connectez-vous au Wi-Fi',
-        description: "SSID et mot de passe sur l'étiquette sous la Box. C'est tout.",
+        description: "SSID et mot de passe figurant sur l'étiquette sous la Box. C'est tout.",
       },
     ],
     helpTitle: "Besoin d'aide ?",
-    helpText: 'Appelez le 71 001 298 — disponible 7j/7, ou visitez l’Espace Topnet le plus proche.',
+    helpText: 'Appelez le service client au 1120 — disponible 7j/7, ou visitez l’agence TOPNET la plus proche.',
   },
   faq: {
     enabled: true,
@@ -534,34 +543,44 @@ const homePageFR = (img) => ({
     titleHighlight: 'fréquentes',
     items: [
       {
-        question: 'La Box 5G nécessite-t-elle une ligne ADSL ?',
+        question: "Qu'est-ce que la Box 5G TOPNET ?",
         answer:
-          'Non. La Box 5G fonctionne uniquement via le réseau mobile (5G/4G). Il suffit d’insérer la carte SIM fournie et de la brancher.',
+          "La Box 5G TOPNET (Huawei H153-381) est une solution d'accès Internet très haut débit qui utilise le réseau mobile 5G pour connecter le foyer, sans ligne téléphonique ni câble fibre. Elle se branche directement sur une prise électrique et diffuse le Wi-Fi dans tout le logement.",
       },
       {
-        question: 'Que faire si la 5G n’est pas disponible chez moi ?',
+        question: "Quelle est la différence entre la Box 5G et la fibre optique (GPON) ou le VDSL ?",
         answer:
-          'La Box bascule automatiquement sur le réseau 4G/LTE. Vous restez connecté, avec des débits pouvant atteindre 100 Mbps.',
+          "La fibre optique et le VDSL offrent une connexion filaire dédiée. La Box 5G capte le signal via les antennes mobiles 5G : elle est idéale pour les foyers non encore raccordés au filaire, avec une mise en service Plug & Play très rapide.",
       },
       {
-        question: 'Combien d’appareils puis-je connecter ?',
+        question: "Ai-je besoin d'une ligne téléphonique fixe pour installer la Box 5G ?",
         answer:
-          'Jusqu’à 512 appareils simultanés grâce au Wi-Fi 6 et au MU-MIMO. Idéal pour une maison très connectée.',
+          "Non. La Box 5G fonctionne uniquement via le réseau mobile 5G ; aucune ligne fixe ni installation filaire n'est nécessaire.",
       },
       {
-        question: 'La Box est-elle offerte ?',
+        question: "Quel débit puis-je espérer avec la Box 5G TOPNET ?",
         answer:
-          'Oui, la Box D-Link DWR-2000M est offerte pour toute souscription avec engagement de 24 mois.',
+          "Le débit dépend de la couverture 5G à votre adresse. Les offres proposent des débits de 30M, 50M et 100M en téléchargement.",
       },
       {
-        question: 'Comment suivre ma consommation ?',
+        question: "Comment savoir si mon adresse est éligible à la Box 5G ?",
         answer:
-          'Via votre Espace client Topnet et l’application mobile, où vous pouvez consulter votre débit et votre data en temps réel.',
+          "Le conseiller vérifie la couverture via l'outil de simulation TOPNET (à partir de votre adresse ou numéro de téléphone) ou en agence.",
       },
       {
-        question: 'Puis-je annuler mon abonnement ?',
+        question: "Comment installer la Box 5G ?",
         answer:
-          'Oui, selon la formule choisie. Les offres sans engagement peuvent être résiliées à tout moment sans frais.',
+          "L'installation est en mode « Plug & Play » : il suffit de brancher la Box sur une prise électrique. Aucun technicien ni rendez-vous n'est nécessaire.",
+      },
+      {
+        question: "Quelle est la durée d'engagement de l'offre ?",
+        answer:
+          "En règle générale, la durée d'engagement est de 12, 24 ou 36 mois.",
+      },
+      {
+        question: "Comment contacter le service client pour la Box 5G ?",
+        answer:
+          "Le client peut joindre le service client TOPNET par téléphone au 1120, via l'espace client en ligne, ou via l'assistant virtuel Topy, disponible 24h/24 et 7j/7.",
       },
     ],
   },
@@ -573,7 +592,7 @@ const homePageFR = (img) => ({
     items: [
       {
         quote:
-          'Installé en 5 minutes chez moi à Sousse. Le Wi-Fi 6 couvre toute la maison, même le jardin.',
+          'Installé en 5 minutes chez moi à Sousse avec la Box Huawei. Le Wi-Fi couvre toute la maison.',
         author: 'Sami A.',
         role: 'Abonné Box 5G 50M',
         avatar: img('avatar-1.jpg'),
@@ -581,7 +600,7 @@ const homePageFR = (img) => ({
       },
       {
         quote:
-          "Fini l'ADSL coupé les jours de pluie. Streaming 4K sans aucune coupure depuis trois mois.",
+          "Fini l'ADSL coupé les jours de pluie. Streaming 4K sans aucune coupure grâce à la 5G.",
         author: 'Mehdi B.',
         role: 'Abonné Box 5G 100M',
         avatar: img('avatar-2.jpg'),
@@ -589,7 +608,7 @@ const homePageFR = (img) => ({
       },
       {
         quote:
-          "J'ai remplacé ma fibre en arrivant à Tunis. Installation simple et support très réactif.",
+          "Installation Plug & Play très simple et assistance réactive via le 1120.",
         author: 'Lamia T.',
         role: 'Abonnée Box 5G 30M',
         avatar: img('avatar-3.jpg'),
