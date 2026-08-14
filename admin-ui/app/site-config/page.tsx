@@ -313,10 +313,10 @@ export default function SiteConfigPage() {
               <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: 12, padding: 16, marginBottom: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                   <span>✨</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24' }}>Couleur des mots en surbrillance dans les titres</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24' }}>Couleur des mots en surbrillance (<em>) dans les titres</span>
                 </div>
                 <p style={{ fontSize: 12, color: '#94a3b8', marginBottom: 12 }}>
-                  Appliquée aux sélecteurs CSS :{' '}
+                  Appliquée aux éléments en em (ex: <em>Profitez.</em>, <em>sans fibre</em>) :{' '}
                   <code style={{ background: '#0f172a', padding: '2px 6px', borderRadius: 4, fontFamily: 'monospace', color: '#f59e0b' }}>
                     h2 em, .section__title em, .hero__title em
                   </code>
@@ -325,12 +325,12 @@ export default function SiteConfigPage() {
               </div>
 
               <Grid>
-                <ColorField label="Couleur principale (boutons)" hint="Boutons, badges, icônes, stats" value={cfg.primary_color} onChange={v => set('primary_color', v)} />
-                <ColorField label="Couleur principale sombre (hover)" hint="Hover des boutons" value={cfg.primary_dark} onChange={v => set('primary_dark', v)} />
+                <ColorField label="Couleur principale (accents & boutons)" hint="Boutons (.btn--primary), surtitres (.tagline), bannière newsletter, badges" value={cfg.primary_color} onChange={v => set('primary_color', v)} />
+                <ColorField label="Couleur principale sombre (hover)" hint="Survol des boutons principaux" value={cfg.primary_dark} onChange={v => set('primary_dark', v)} />
               </Grid>
               <Grid>
-                <ColorField label="Couleur des titres" hint="h1, h2, h3, liens nav…" value={cfg.heading_color} onChange={v => set('heading_color', v)} />
-                <ColorField label="Couleur du texte courant" hint="Paragraphes, descriptions" value={cfg.text_color} onChange={v => set('text_color', v)} />
+                <ColorField label="Couleur des titres" hint="h1, h2, h3, liens nav, sous-titres…" value={cfg.heading_color} onChange={v => set('heading_color', v)} />
+                <ColorField label="Couleur du texte courant" hint="Paragraphes, descriptions, détails des offres" value={cfg.text_color} onChange={v => set('text_color', v)} />
               </Grid>
               <Grid>
                 <ColorField label="Fond clair" hint="Sections alternées" value={cfg.light_bg} onChange={v => set('light_bg', v)} />
