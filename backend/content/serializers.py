@@ -33,6 +33,35 @@ class SiteConfigSerializer(serializers.ModelSerializer):
         model = SiteConfig
         exclude = ['created_at']
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        # Compatibility mapping between snake_case backend fields and camelCase frontend properties
+        aliases = {
+            'siteName': data.get('site_name'),
+            'primaryColor': data.get('primary_color'),
+            'primaryDark': data.get('primary_dark'),
+            'emColor': data.get('em_color'),
+            'headingColor': data.get('heading_color'),
+            'textColor': data.get('text_color'),
+            'lightBg': data.get('light_bg'),
+            'borderColor': data.get('border_color'),
+            'darkBg': data.get('dark_bg'),
+            'bodyFont': data.get('body_font'),
+            'headingFont': data.get('heading_font'),
+            'arabicFont': data.get('arabic_font'),
+            'topbarLeft': data.get('topbar_left'),
+            'ctaLabel': data.get('cta_label'),
+            'ctaUrl': data.get('cta_url'),
+            'langLabel': data.get('lang_label'),
+            'footerAbout': data.get('footer_about'),
+            'contactTitle': data.get('contact_title'),
+            'footerText': data.get('footer_text') or data.get('copyright'),
+        }
+        for k, v in aliases.items():
+            if v is not None and k not in data:
+                data[k] = v
+        return data
+
     def get_logo_url(self, obj):
         request = self.context.get('request')
         return _media_url(request, str(obj.logo) if obj.logo else '')

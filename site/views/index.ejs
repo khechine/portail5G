@@ -11,16 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&family=Cairo:wght@400..900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --c-primary: <%= cssval(config.primaryColor, '#FFA502') %>;
-      --c-primary-dark: <%= cssval(config.primaryDark, '#e08e00') %>;
-      --c-em: <%= cssval(config.emColor, config.primaryColor, '#FFA502') %>;
-      --c-heading: <%= cssval(config.headingColor, '#251444') %>;
-      --c-text: <%= cssval(config.textColor, '#737177') %>;
-      --c-bg: <%= cssval(config.lightBg, '#F7F5F1') %>;
-      --c-border: <%= cssval(config.borderColor, '#E6E2D9') %>;
-      --c-dark: <%= cssval(config.darkBg, '#251444') %>;
-      --font-body: "<%= fontname(config.bodyFont, 'Outfit') %>", system-ui, sans-serif;
-      --font-heading: "<%= fontname(config.headingFont, 'Outfit') %>", system-ui, serif;
+      --c-primary: <%= cssval(config.primaryColor || config.primary_color, '#FFA502') %>;
+      --c-primary-dark: <%= cssval(config.primaryDark || config.primary_dark, '#e08e00') %>;
+      --c-em: <%= cssval(config.emColor || config.em_color, config.primaryColor || config.primary_color, '#FFA502') %>;
+      --c-heading: <%= cssval(config.headingColor || config.heading_color, '#251444') %>;
+      --c-text: <%= cssval(config.textColor || config.text_color, '#737177') %>;
+      --c-bg: <%= cssval(config.lightBg || config.light_bg, '#F7F5F1') %>;
+      --c-border: <%= cssval(config.borderColor || config.border_color, '#E6E2D9') %>;
+      --c-dark: <%= cssval(config.darkBg || config.dark_bg, '#251444') %>;
+      --font-body: "<%= fontname(config.bodyFont || config.body_font, 'Outfit') %>", system-ui, sans-serif;
+      --font-heading: "<%= fontname(config.headingFont || config.heading_font, 'Outfit') %>", system-ui, serif;
     }
   </style>
   <link rel="stylesheet" href="/css/site.css">
