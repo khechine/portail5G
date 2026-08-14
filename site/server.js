@@ -85,7 +85,7 @@ app.post('/api/order', async (req, res) => {
     return res.status(400).json({ ok: false, error: 'required' });
   }
   try {
-    const r = await fetch(`${STRAPI_URL}/api/leads`, {
+    const r = await fetch(`${STRAPI_URL}/api/leads/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: payload }),
@@ -105,7 +105,7 @@ app.post('/api/newsletter', async (req, res) => {
     return res.status(400).json({ ok: false, error: 'email' });
   }
   try {
-    const r = await fetch(`${STRAPI_URL}/api/leads`, {
+    const r = await fetch(`${STRAPI_URL}/api/leads/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: { firstname: 'Newsletter', phone: '-', governorate: '-', plan: 'Newsletter', address: email, locale: (req.body.locale || 'fr') } }),
