@@ -69,8 +69,8 @@ def plan_card_ar(speed, unit, price, title, badge, recommended, perks, period='/
 SITE_CONFIG_FR = {
     'locale': 'fr',
     'site_name': 'TOPNET Box 5G',
-    'primary_color': '#FFA502',
-    'primary_dark': '#e08e00',
+    'primary_color': '#e2418c',
+    'primary_dark': '#c93578',
     'heading_color': '#251444',
     'text_color': '#737177',
     'light_bg': '#F7F5F1',

@@ -30,9 +30,9 @@ interface SiteConfig {
 
 const DEFAULTS: SiteConfig = {
   site_name: '',
-  primary_color: '#FFA502',
-  primary_dark: '#e08e00',
-  em_color: '#FFA502',
+  primary_color: '#e2418c',
+  primary_dark: '#c93578',
+  em_color: '#e2418c',
   heading_color: '#251444',
   text_color: '#737177',
   light_bg: '#F7F5F1',
@@ -58,7 +58,7 @@ const inputStyle: React.CSSProperties = {
   fontFamily: 'inherit',
 };
 const textareaStyle: React.CSSProperties = { ...inputStyle, resize: 'vertical' as const, minHeight: 80 };
-const PRESETS = ['#FFA502', '#e2418c', '#251444', '#1a73e8', '#22c55e', '#ef4444'];
+const PRESETS = ['#e2418c', '#e2418c', '#251444', '#1a73e8', '#22c55e', '#ef4444'];
 
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
@@ -223,9 +223,9 @@ export default function SiteConfigPage() {
         const d = res.data || {};
         setCfg({
           site_name: d.site_name || '',
-          primary_color: d.primary_color || '#FFA502',
-          primary_dark: d.primary_dark || '#e08e00',
-          em_color: d.em_color || d.primary_color || '#FFA502',
+          primary_color: d.primary_color || '#e2418c',
+          primary_dark: d.primary_dark || '#c93578',
+          em_color: d.em_color || d.primary_color || '#e2418c',
           heading_color: d.heading_color || '#251444',
           text_color: d.text_color || '#737177',
           light_bg: d.light_bg || '#F7F5F1',

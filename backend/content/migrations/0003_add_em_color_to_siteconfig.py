@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='siteconfig',
             name='em_color',
-            field=models.CharField(default='#FFA502', max_length=20, verbose_name='Couleur des <em> dans les titres (h2 em, .section__title em)'),
+            field=models.CharField(default='#e2418c', max_length=20, verbose_name='Couleur des <em> dans les titres (h2 em, .section__title em)'),
         ),
         migrations.AlterField(
             model_name='plancard',
@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='siteconfig',
             name='primary_color',
-            field=models.CharField(default='#FFA502', max_length=20, verbose_name='Couleur principale (boutons, accents)'),
+            field=models.CharField(default='#e2418c', max_length=20, verbose_name='Couleur principale (boutons, accents)'),
         ),
         migrations.AlterField(
             model_name='siteconfig',

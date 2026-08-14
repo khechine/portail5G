@@ -528,7 +528,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='siteconfig',
             name='primary_color',
-            field=models.CharField(default='#FFA502', max_length=20, verbose_name='Couleur principale'),
+            field=models.CharField(default='#e2418c', max_length=20, verbose_name='Couleur principale'),
         ),
         migrations.AlterField(
             model_name='siteconfig',

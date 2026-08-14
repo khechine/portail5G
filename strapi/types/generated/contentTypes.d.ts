@@ -758,7 +758,7 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
           localized: false;
         };
       }> &
-      Schema.Attribute.DefaultTo<'#FFA502'>;
+      Schema.Attribute.DefaultTo<'#e2418c'>;
     primaryDark: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

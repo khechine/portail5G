@@ -9,7 +9,7 @@ const path = require('path');
 const OUT = path.join(__dirname, 'assets');
 fs.mkdirSync(OUT, { recursive: true });
 
-const RED = '#FFA502';
+const RED = '#e2418c';
 const RED_DARK = '#e08e00';
 const NAVY = '#251444';
 const ORANGE = '#f47920';
@@ -146,7 +146,7 @@ const plan = (name, speed, colorA, colorB) =>
 </svg>`
   );
 plan('plan-1.svg', '30M', '#3a2b6b', '#251444');
-plan('plan-2.svg', '50M', '#FFA502', '#d17a00');
+plan('plan-2.svg', '50M', '#e2418c', '#d17a00');
 plan('plan-3.svg', '100M', '#1f4d7a', '#12304d');
 
 // ─── cta-bg.svg ───
@@ -189,7 +189,7 @@ const avatar = (name, initials, a, b) =>
   <text x="80" y="82" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="${NAVY}" text-anchor="middle">${initials}</text>
 </svg>`
   );
-avatar('avatar-1.svg', 'SA', '#FFA502', '#d17a00');
+avatar('avatar-1.svg', 'SA', '#e2418c', '#d17a00');
 avatar('avatar-2.svg', 'MB', '#f47920', '#c0561c');
 avatar('avatar-3.svg', 'LT', '#1f4d7a', '#12304d');
 
@@ -214,7 +214,7 @@ const news = (name, label, a, b) =>
 </svg>`
   );
 news('news-1.svg', '5G NEWS', '#3a2b6b', '#251444');
-news('news-2.svg', 'AWARD 2026', '#FFA502', '#d17a00');
+news('news-2.svg', 'AWARD 2026', '#e2418c', '#d17a00');
 news('news-3.svg', 'LAUNCH OFFER', '#1f4d7a', '#12304d');
 
 console.log('Assets générés dans', OUT);

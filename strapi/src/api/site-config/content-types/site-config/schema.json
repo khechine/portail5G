@@ -50,7 +50,7 @@
     },
     "primaryColor": {
       "type": "string",
-      "default": "#FFA502",
+      "default": "#e2418c",
       "pluginOptions": {
         "i18n": {
           "localized": false

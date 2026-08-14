@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('site_name', models.CharField(blank=True, max_length=100)),
                 ('logo', models.ImageField(blank=True, null=True, upload_to='config/')),
                 ('favicon', models.FileField(blank=True, null=True, upload_to='config/')),
-                ('primary_color', models.CharField(default='#FFA502', max_length=20)),
+                ('primary_color', models.CharField(default='#e2418c', max_length=20)),
                 ('primary_dark', models.CharField(default='#e08e00', max_length=20)),
                 ('heading_color', models.CharField(default='#251444', max_length=20)),
                 ('text_color', models.CharField(default='#737177', max_length=20)),
