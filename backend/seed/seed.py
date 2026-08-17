@@ -154,6 +154,7 @@ HOME_PAGE_FR = {
                 'text': "La TOPNET Box 5G Huawei H153-381 : aucun technicien, aucun câble. Branchez, connectez-vous et profitez d'un débit ultrarapide jusqu'à 100 Mbps — dès la première minute.",
                 'btnPrimaryLabel': 'Commandez maintenant', 'btnPrimaryUrl': '#commander',
                 'btnSecondaryLabel': 'Voir les tarifs', 'btnSecondaryUrl': '#offres',
+                'image_asset': 'hero_slide_1.png',
             },
             {
                 'badge': 'Réseau hybride 5G + 4G',
@@ -162,6 +163,7 @@ HOME_PAGE_FR = {
                 'text': 'La couverture 5G et le basculement automatique vers la 4G garantissent une connexion stable, même loin de la fibre.',
                 'btnPrimaryLabel': 'Découvrir les offres', 'btnPrimaryUrl': '#offres',
                 'btnSecondaryLabel': 'Assistance', 'btnSecondaryUrl': '#faq',
+                'image_asset': 'hero_slide_2.png',
             },
             {
                 'badge': 'Wi-Fi 6 bi-bande',
@@ -170,6 +172,7 @@ HOME_PAGE_FR = {
                 'text': 'La Box Huawei H153-381 offre un Wi-Fi 6 bi-bande pour streamer, jouer et télétravailler en toute fluidité.',
                 'btnPrimaryLabel': 'Commandez maintenant', 'btnPrimaryUrl': '#commander',
                 'btnSecondaryLabel': 'Fiche technique', 'btnSecondaryUrl': '#specs',
+                'image_asset': 'hero_slide_3.jpeg',
             },
         ],
     },
@@ -419,6 +422,7 @@ HOME_PAGE_AR = {
                 'text': 'بوكس 5G من توبنات Huawei H153-381 : بدون فنّي، بدون كابل. أوصله واتصل واستمتع بسرعة فائقة تصل إلى 100 ميجابت/ثانية.',
                 'btnPrimaryLabel': 'اطلب الآن', 'btnPrimaryUrl': '#commander',
                 'btnSecondaryLabel': 'شاهد الأسعار', 'btnSecondaryUrl': '#offres',
+                'image_asset': 'hero_slide_1.png',
             },
             {
                 'badge': 'شبكة هجينة 5G + 4G',
@@ -427,6 +431,7 @@ HOME_PAGE_AR = {
                 'text': 'تغطية 5G مع تحويل تلقائي إلى 4G تضمن اتصالاً مستقراً حتى بعيداً عن الألياف.',
                 'btnPrimaryLabel': 'اكتشف العروض', 'btnPrimaryUrl': '#offres',
                 'btnSecondaryLabel': 'المساعدة', 'btnSecondaryUrl': '#faq',
+                'image_asset': 'hero_slide_2.png',
             },
             {
                 'badge': 'Wi-Fi 6 ثنائي النطاق',
@@ -435,6 +440,7 @@ HOME_PAGE_AR = {
                 'text': 'بوكس Huawei H153-381 توفر Wi-Fi 6 ثنائي النطاق للبث والألعاب والعمل عن بُعد بسلاسة تامة.',
                 'btnPrimaryLabel': 'اطلب الآن', 'btnPrimaryUrl': '#commander',
                 'btnSecondaryLabel': 'المواصفات التقنية', 'btnSecondaryUrl': '#specs',
+                'image_asset': 'hero_slide_3.jpeg',
             },
         ],
     },
@@ -689,8 +695,27 @@ def seed_explicit_models():
                 btn_secondary_url=slide.get('btnSecondaryUrl', ''),
                 order=i,
             )
+            img_asset = slide.get('image_asset')
+            if img_asset:
+                _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
+                if os.path.exists(_asset_path):
+                    from django.core.files import File
+                    with open(_asset_path, 'rb') as _f:
+                        s.image.save(f'hero/{img_asset}', File(_f), save=True)
             hp_fr.hero_slides.add(s)
         log('✅ HeroSlide FR créés')
+    else:
+        for i, s in enumerate(hp_fr.hero_slides.all().order_by('order')):
+            slides_data = data_fr['hero'].get('slides', [])
+            if i < len(slides_data):
+                img_asset = slides_data[i].get('image_asset')
+                if img_asset and not s.image:
+                    _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
+                    if os.path.exists(_asset_path):
+                        from django.core.files import File
+                        with open(_asset_path, 'rb') as _f:
+                            s.image.save(f'hero/{img_asset}', File(_f), save=True)
+        log('✅ HeroSlide FR mis à jour (images)')
 
     # Trust items
     if not hp_fr.trust_items.exists():
@@ -863,8 +888,27 @@ def seed_explicit_models():
                 btn_secondary_url=slide.get('btnSecondaryUrl', ''),
                 order=i,
             )
+            img_asset = slide.get('image_asset')
+            if img_asset:
+                _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
+                if os.path.exists(_asset_path):
+                    from django.core.files import File
+                    with open(_asset_path, 'rb') as _f:
+                        s.image.save(f'hero/{img_asset}', File(_f), save=True)
             hp_ar.hero_slides.add(s)
         log('✅ HeroSlide AR créés')
+    else:
+        for i, s in enumerate(hp_ar.hero_slides.all().order_by('order')):
+            slides_data = data_ar['hero'].get('slides', [])
+            if i < len(slides_data):
+                img_asset = slides_data[i].get('image_asset')
+                if img_asset and not s.image:
+                    _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
+                    if os.path.exists(_asset_path):
+                        from django.core.files import File
+                        with open(_asset_path, 'rb') as _f:
+                            s.image.save(f'hero/{img_asset}', File(_f), save=True)
+        log('✅ HeroSlide AR mis à jour (images)')
 
     if not hp_ar.trust_items.exists():
         for i, item in enumerate(data_ar['trust'].get('items', [])):
