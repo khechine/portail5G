@@ -32,10 +32,10 @@
                   <img src="<%= mediaUrl(card.image) %>" alt="<%= esc(card.title) %>">
                 </div>
               <% } %>
-              <% if (card.badge) { %>
-                <span class="plan-card__badge"><%= esc(card.badge) %></span>
-              <% } %>
               <div class="plan-card__body">
+                <% if (card.badge) { %>
+                  <span class="plan-card__badge"><%= esc(card.badge) %></span>
+                <% } %>
                 <div class="plan-card__speed">
                   <span class="plan-card__speed-num"><%= esc(card.speed) %><sup><%= esc(card.speedUnit) %></sup></span>
                   <span class="plan-card__speed-lbl"><%= esc(card.speedLabel) %></span>
