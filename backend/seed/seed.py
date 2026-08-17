@@ -350,6 +350,7 @@ HOME_PAGE_FR = {
         'tagline': 'Newsletter',
         'title': 'Restez',
         'titleHighlight': 'informé',
+        'text': "Recevez les dernières offres et l'actualité 5G de Topnet.",
         'subtitle': "Recevez les dernières offres et l'actualité 5G de Topnet.",
         'placeholder': 'Votre adresse email', 'buttonLabel': "S'abonner",
         'msgEmail': 'Veuillez saisir un email valide.',
@@ -606,6 +607,7 @@ HOME_PAGE_AR = {
         'tagline': 'النشرة البريدية',
         'title': 'ابقَ',
         'titleHighlight': 'متابعاً',
+        'text': 'استلم آخر العروض وأخبار 5G من توبنات.',
         'subtitle': 'استلم آخر العروض وأخبار 5G من توبنات.',
         'placeholder': 'بريدك الإلكتروني', 'buttonLabel': 'اشترك',
         'msgEmail': 'يرجى إدخال بريد إلكتروني صحيح.',
@@ -709,7 +711,7 @@ def seed_explicit_models():
             slides_data = data_fr['hero'].get('slides', [])
             if i < len(slides_data):
                 img_asset = slides_data[i].get('image_asset')
-                if img_asset and not s.image:
+                if img_asset:
                     _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
                     if os.path.exists(_asset_path):
                         from django.core.files import File
@@ -733,6 +735,12 @@ def seed_explicit_models():
     hp_fr.about_button_label = ab.get('buttonLabel', '')
     hp_fr.about_button_url = ab.get('buttonUrl', '')
     hp_fr.about_features = ab.get('features', [])
+    _about_img = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'about_femme.jpg')
+    if os.path.exists(_about_img):
+        from django.core.files import File
+        with open(_about_img, 'rb') as _f:
+            hp_fr.about_image.save('about/about_femme.jpg', File(_f), save=False)
+        log('✅ About image FR uploadée (femme.jpg)')
 
     # Services
     sv = data_fr.get('services', {})
@@ -902,7 +910,7 @@ def seed_explicit_models():
             slides_data = data_ar['hero'].get('slides', [])
             if i < len(slides_data):
                 img_asset = slides_data[i].get('image_asset')
-                if img_asset and not s.image:
+                if img_asset:
                     _asset_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', img_asset)
                     if os.path.exists(_asset_path):
                         from django.core.files import File
@@ -924,6 +932,12 @@ def seed_explicit_models():
     hp_ar.about_button_label = ab_ar.get('buttonLabel', '')
     hp_ar.about_button_url = ab_ar.get('buttonUrl', '')
     hp_ar.about_features = ab_ar.get('features', [])
+    _about_img = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'about_femme.jpg')
+    if os.path.exists(_about_img):
+        from django.core.files import File
+        with open(_about_img, 'rb') as _f:
+            hp_ar.about_image.save('about/about_femme.jpg', File(_f), save=False)
+        log('✅ About image AR uploadée (femme.jpg)')
 
     sv_ar = data_ar.get('services', {})
     hp_ar.services_tagline = sv_ar.get('tagline', '')

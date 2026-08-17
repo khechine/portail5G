@@ -3,10 +3,16 @@
   <div class="container newsletter__inner">
     <div class="newsletter__text">
       <% if (home.newsletter.title) { %>
-        <h2 class="newsletter__title"><%= esc(home.newsletter.title) %></h2>
+        <h2 class="newsletter__title">
+          <%= esc(home.newsletter.title) %>
+          <% if (home.newsletter.titleHighlight) { %>
+            <em><%= esc(home.newsletter.titleHighlight) %></em>
+          <% } %>
+        </h2>
       <% } %>
-      <% if (home.newsletter.text) { %>
-        <p class="newsletter__sub"><%= esc(home.newsletter.text) %></p>
+      <% const sub = home.newsletter.text || home.newsletter.subtitle; %>
+      <% if (sub) { %>
+        <p class="newsletter__sub"><%= esc(sub) %></p>
       <% } %>
     </div>
     <form class="newsletter__form" id="newsletter-form" novalidate>
