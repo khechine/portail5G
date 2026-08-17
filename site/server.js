@@ -24,7 +24,7 @@ const locals = (req, res, next) => {
     return { full: v, empty: 5 - v };
   };
   res.locals.esc = (t) =>
-    String(t || '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+    String(t || '').replace(/&amp;amp;/g, '&').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
   res.locals.cssval = (v, d) => String(v || d).replace(/[^#a-zA-Z0-9,\s-]/g, '');
   res.locals.fontname = (v, d) => String(v || d).replace(/[^a-zA-Z0-9\s-]/g, '');
   next();
